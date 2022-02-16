@@ -1,0 +1,8 @@
+**Instalar os componentes usando o propmt no C:/TCC-chatbot**
+
+pip install tensorflow
+pip install keras
+pip install pickle-mixin
+pip install pickle
+pip install nltk
+

@@ -1,0 +1,16 @@
+* No treino do bot, ele pega o json, e insere numa base interna de dados, onde distribui as palavras
+
+["Oi", "Ola", "Ajuda", "Bom", "dia", "Boa", "tarde", "noite", "Tchau", "Obrigada", "Obrigado"]
+
+* E verifica no conceito 'bag of words' para a analise do pattern, e também verifica a tag descrita no intents para definir onde melhor se encaixa 
+
+
+		["Oi", "Ola", "Ajuda", "Bom", "dia", "Tchau"]
+Oi         1     0       0       0      0       0             |
+Ola        0     1       0       0      0       0             | inicio
+Bom dia    0     0       0       1      1       0             |
+
+Tchau      0     0       0       0      0       1             | fim
+
+* NLP
+Para o processamento da linguagem natural da pessoa que conversa com o bot, acontece o fator 'tokenização', que consiste na divisão das strings(palavras) para unidades significativas como em palavras, numeros ou simbolos

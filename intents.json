@@ -1,0 +1,42 @@
+# encoding: utf-8
+{
+    "intents": [
+        {
+            "tag":"inicio",
+            "patterns": [
+                "Olá", 
+                "Oi", 
+                "Ajuda", 
+                "Bom dia", 
+                "Boa tarde", 
+                "Boa noite"
+            ],
+            "responses":[
+                "Oi. Tudo bem?",
+                "Olá! Como vai?",
+                "Olá! Posso ajudar?",
+                "Qual o seu problema?"
+            ],
+            "context":[""]
+        },
+        {
+            "tag":"fim",
+            "patterns": [
+                "Tchau", 
+                "Obrigada", 
+                "Obrigado", 
+                "Valeu", 
+                "É nóis"
+            ],
+            "responses":[
+                "Tchau!",
+                "Espero que tenha ajudado!",
+                "Até uma próxima!"
+            ],
+            "context":[""]
+
+        }
+        
+
+    ]
+}
