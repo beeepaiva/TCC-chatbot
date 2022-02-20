@@ -155,12 +155,18 @@ def stem(palavra):
 	return  st.stem(palavra.lower())
 
 def bagOfWords(fraseToken, todasPalavras):
-	pass
+    fraseToken = [stem(w) for w in fraseToken]
+    bag = np.zeros(len(todasPalavras), dtype=np.float32)
+    for idx, w in enumerate(todasPalavras)
+        if w in fraseToken:
+            bag[idx] = 1.0
+    return bag
 
-teste = "Alguém pode me ajudar?"
+
+"""teste = "Alguém pode me ajudar?"
 print(teste)
 teste = tokenizacao(teste)
 
 stemA = [stem(x) for x in teste]
-print(teste)
-print(stemA)
+//print(teste)
+//print(stemA) """

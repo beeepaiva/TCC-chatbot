@@ -13,4 +13,23 @@ Bom dia    0     0       0       1      1       0             |
 Tchau      0     0       0       0      0       1             | fim
 
 * NLP
-Para o processamento da linguagem natural da pessoa que conversa com o bot, acontece o fator 'tokenização', que consiste na divisão das strings(palavras) para unidades significativas como em palavras, numeros ou simbolos
+Para o processamento da linguagem natural da pessoa que conversa com o bot, acontece o fator 'tokenização', 'stemming', 'lemmatization'
+
+'Tokenização': consiste na divisão das strings(palavras) para unidades significativas como em palavras, numeros ou simbolos.
+
+'Stemming': consiste na derivação da palavra, buscar reduzir a palavra à sua raiz, excluindo o final delas e usando o começo para encontrar proximas, mas tem dois tipos de problemas como: cortar demais e acabar com um stem que não tem sentido e perdeu muito de sua informação; ou também cortar demais e ter dois stem iguais para palavras com significados muito diferentes.
+
+'Lemmatization': onsiste na derivação da palavra, buscar reduzir a palavra à sua raiz, mas essa redução sempre vai ter como resultado uma palavra gramaticalmente correta, diferente do stemming que pode cortar a palavra e gerar uma inexistente. A lemmatization é mais lenta, mas garante que vai gerar palavras gramaticalmente corretas e com maior precisão já que leva a classe gramatical em consideração.
+
+*Fluxo do NLP*
+
+"Alguém pode me ajudar?"
+-> tokenização ["Alguém", "pode", "me", "ajudar", "?"]
+-> lower + stemm ["algu", "pod", "me", "ajuda", "?"]
+-> remover simbolos ['alguém', 'pod', 'me', 'ajud']
+-> bag of words [0,0,0,1] (tag -> inicio)
+
+
+*Treinar com os dados*
+
+Colletar todas as palavras do array

@@ -1,10 +1,9 @@
-# encoding: utf-8
 {
     "intents": [
         {
             "tag":"inicio",
             "patterns": [
-                "Olá", 
+                "Ola", 
                 "Oi", 
                 "Ajuda", 
                 "Bom dia", 
@@ -13,8 +12,8 @@
             ],
             "responses":[
                 "Oi. Tudo bem?",
-                "Olá! Como vai?",
-                "Olá! Posso ajudar?",
+                "Ola! Como vai?",
+                "Ola! Posso ajudar?",
                 "Qual o seu problema?"
             ],
             "context":[""]
@@ -25,13 +24,12 @@
                 "Tchau", 
                 "Obrigada", 
                 "Obrigado", 
-                "Valeu", 
-                "É nóis"
+                "Valeu" 
             ],
             "responses":[
                 "Tchau!",
                 "Espero que tenha ajudado!",
-                "Até uma próxima!"
+                "Ate uma proxima!"
             ],
             "context":[""]
 
