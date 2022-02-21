@@ -6,3 +6,19 @@
 pip install torch
 pip install nltk
 
+Arquivos:
+intenjs.json -> dados
+nlp_inicial -> funções básicas para processamento do NLP (stem, tokenization e bag of words)
+model -> Deep Learning com o PyTorch
+train -> treinando o modelo de bot e transformando essa 'inteligencia' no arquivo 'data.pth'
+chat -> interface via console 
+
+Para treinar com os dados usar: python train.py
+Depois da criação do 'data.pth'
+Para o chat no console usar: python chat.py
+
+Cores
+https://encycolorpedia.pt/
+
+Tkinter (Interface)
+https://docs.python.org/3/library/tk.html

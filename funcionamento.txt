@@ -33,3 +33,4 @@ Para o processamento da linguagem natural da pessoa que conversa com o bot, acon
 *Treinar com os dados*
 
 Colletar todas as palavras do array
+

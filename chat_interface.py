@@ -5,7 +5,7 @@ Created on Mon Feb 21 14:46:52 2022
 @author: beeep
 """
 
-"""import json
+import json
 import random
 import torch
 import numpy
@@ -35,12 +35,8 @@ bot_name = "Bea"
 print("Em que posso ajudar?")
 print("Para encerrar digite 'sair'")
 
-while True:
-    sentence = input("Você: ")
-    if sentence == "sair":
-        break
-    
-    sentence = tokenizacao(sentence)
+def get_response(msg):
+    sentence = tokenizacao(msg)
     X = bagOfWords(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
@@ -55,6 +51,6 @@ while True:
     if prob.item() > 0.75:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
+                return random.choice(intent['responses'])
     else:
-        print(f'{bot_name}: Não entendi o que disse')"""
+        return "Não entendi o que disse"
