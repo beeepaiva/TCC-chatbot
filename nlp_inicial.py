@@ -157,9 +157,9 @@ def stem(palavra):
 def bagOfWords(fraseToken, todasPalavras):
     fraseToken = [stem(w) for w in fraseToken]
     bag = np.zeros(len(todasPalavras), dtype=np.float32)
-    for idx, w in enumerate(todasPalavras)
+    for idx, w in enumerate(todasPalavras):
         if w in fraseToken:
-            bag[idx] = 1.0
+            bag[idx] = 1
     return bag
 
 

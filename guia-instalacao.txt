@@ -1,8 +1,8 @@
 **Instalar os componentes usando o propmt no C:/TCC-chatbot**
 
-pip install tensorflow
-pip install keras
-pip install pickle-mixin
-pip install pickle
+#Python version 3.7.9 
+# Versão mais recente ainda não tem suporte para o torch
+
+pip install torch
 pip install nltk
 
