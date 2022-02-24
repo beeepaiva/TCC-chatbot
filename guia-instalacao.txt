@@ -22,3 +22,18 @@ https://encycolorpedia.pt/
 
 Tkinter (Interface)
 https://docs.python.org/3/library/tk.html
+
+
+-> Modo com interface
+Clone do projeto
+Criar ambiente virtual
+python -m venv venv
+.\venv\Scripts\activate.bat
+###Depois de ativar
+pip install Flask torch torchvision nltk
+
+$ (venv) python
+>>> import nltk
+>>> nltk.download('punkt')
+
+$ (venv) python train.py

@@ -51,6 +51,7 @@ def get_response(msg):
     if prob.item() > 0.75:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                return random.choice(intent['responses'])
+                #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
+                return {"msg": random.choice(intent['responses']), "tag": intent["tag"], "prob": prob.item()}
     else:
-        return "Não entendi o que disse"
+        return {"msg": "Não entendi", "tag": "", "prob": ""}
