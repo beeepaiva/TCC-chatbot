@@ -3,7 +3,7 @@
         {
             "tag":"inicio",
             "patterns": [
-                "Ola", 
+                "Olá", 
                 "Oi", 
                 "Ajuda", 
                 "Bom dia", 
@@ -12,8 +12,8 @@
             ],
             "responses":[
                 "Oi. Tudo bem?",
-                "Ola! Como vai?",
-                "Ola! Posso ajudar?",
+                "Olá! Como vai?",
+                "Olá! Posso ajudar?",
                 "Qual o seu problema?"
             ],
             "context":[""]
@@ -29,7 +29,7 @@
             "responses":[
                 "Tchau!",
                 "Espero que tenha ajudado!",
-                "Ate uma proxima!"
+                "Até uma próxima!"
             ],
             "context":[""]
 
