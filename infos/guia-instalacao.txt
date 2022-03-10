@@ -42,3 +42,7 @@ $ (venv) python train.py
 -> BRANCH TENSOR FLOW
 
 -> Remoção dos primeiros arquivos
+
+pip install nltk
+pip install tensorflow
+pip install tflearn

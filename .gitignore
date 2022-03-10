@@ -136,3 +136,8 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+tflearn_logs/
+model.tflearn.*
+training_data
+checkpoint
