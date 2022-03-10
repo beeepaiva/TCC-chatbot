@@ -37,3 +37,8 @@ $ (venv) python
 >>> nltk.download('punkt')
 
 $ (venv) python train.py
+
+
+-> BRANCH TENSOR FLOW
+
+-> Remoção dos primeiros arquivos
