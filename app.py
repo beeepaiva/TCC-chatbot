@@ -13,7 +13,7 @@ def predict():
     getResponse = get_response(text, show_details=True)
     #if getResponse != "Não entendi o que disse":
     response = getResponse
-    message = {"resposta": response}
+    message = {"resposta": response['message'], "tag": response['tag'], "prob": response['prob']}
     return jsonify(message)
     #else:
     #    return getResponse

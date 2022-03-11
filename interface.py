@@ -52,38 +52,38 @@ def bow(sentence, words, show_details=False):
 context = {}
 ERROR_THRESHOLD = 0.25
 def classify(sentence):
-    # generate probabilities from the model
+    # a partir do model, gera a probabilidade
     results = model.predict([bow(sentence, words)])[0]
-    # filter out predictions below a threshold
+    # filtra as predições
     results = [[i, r] for i, r in enumerate(results) if r > ERROR_THRESHOLD]
-    # sort by strength of probability
+    # ordena pela probabilidade
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
     for r in results:
         return_list.append((classes[r[0]], r[1]))
-    # return tuple of intent and probability
+    # retorna intent e prob
     return return_list
 
 def get_response(sentence, userID='123', show_details=False):
     results = classify(sentence)
-    # if we have a classification then find the matching intent tag
+    prob = results[0][1]
     if results:
-        # loop as long as there are matches to process
         while results:
             for i in intents['intents']:
-                # find a tag matching the first result
+                # encontra a tag
                 if i['tag'] == results[0][0]:
-                    # set context for this intent if necessary
+                    # setta um contexto se necessario
                     if 'context_set' in i:
                         if show_details: print ('context:', i['context_set'])
                         context[userID] = i['context_set']
 
-                    # check if this intent is contextual and applies to this user's conversation
+                    # se tiver contexto coloca no historico do usuario
                     if not 'context_filter' in i or \
                         (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
                         if show_details: print ('tag:', i['tag'])
-                        # a random response from the intent
-                        return random.choice(i['responses'])
+                        # retorna resposta aleatoria dentro da identificaçao da tag ou context
+                        final_response = {'message': random.choice(i['responses']), 'tag': i['tag'], 'prob': str(prob)}
+                        return final_response
 
             results.pop(0)
 

@@ -60,7 +60,7 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Bea", message: r.resposta};
+            let msg2 = { name: "Bea", message: r.resposta, tag: r.tag, prob: r.prob};
             this.messages.push(msg2);
             this.updateChatText(chatbox)
             textField.value = ''
@@ -79,7 +79,7 @@ class Chatbox {
         this.messages.slice().reverse().forEach(function(item, index) {
             if (item.name === "Bea")
             {
-                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
+                html += '<div class="messages__item messages__item--visitor">' + item.message +  '<br> Probabilidade: '  + item.prob + '<br> Tag: ' + item.tag + '</div>'
             }
             else
             {
