@@ -60,7 +60,7 @@ output_empty = [0] * len(classes)
 for doc in documents:
     bag = []
     pattern_words = doc[0]
-    pattern_words = [stemmer.stem(word.lower()) for word in pattern_words]
+    pattern_words = [stPortugues.stem(word.lower()) for word in pattern_words]
     for w in words:
         bag.append(1) if w in pattern_words else bag.append(0)
 
@@ -79,8 +79,8 @@ train_y = list(training[:,1])
 
 # REDE NEURAL com tflearn
 net = tflearn.input_data(shape=[None, len(train_x[0])])
-net = tflearn.fully_connected(net, 8)
-net = tflearn.fully_connected(net, 8)
+net = tflearn.fully_connected(net, 10)
+net = tflearn.fully_connected(net, 10)
 net = tflearn.fully_connected(net, len(train_y[0]), activation='softmax')
 net = tflearn.regression(net)
 

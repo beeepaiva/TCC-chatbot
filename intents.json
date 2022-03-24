@@ -15,8 +15,7 @@
                 "Olá! Como vai?",
                 "Olá! Posso ajudar?",
                 "Qual o seu problema?"
-            ],
-            "context":[""]
+            ] 
         },
         {
             "tag":"fim",
@@ -30,11 +29,41 @@
                 "Tchau!",
                 "Espero que tenha ajudado!",
                 "Até uma próxima!"
+            ] 
+        },
+        {
+            "tag":"materia",
+            "patterns": [
+                "Qual matéria tenho hoje?"
             ],
-            "context":[""]
-
+            "responses":[
+                "Qual seu curso?"
+            ],
+            "context_set":["materiacurso"]
+        },
+        {
+            "tag":"TecSI",
+            "patterns": [
+                "TSI",
+                "Sistemas",
+                "Sistemas da informação"
+            ],
+            "responses":[
+                "TESTE"
+            ],
+            "context_filter":["materiacurso"]
+        },
+        {
+            "tag":"BCC",
+            "patterns": [
+                "BCC",
+                "Ciência da computação"
+            ],
+            "responses":[
+                "TCC"
+            ],
+            "context_filter":["materiacurso"]
         }
         
-
     ]
 }
