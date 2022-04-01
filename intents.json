@@ -1,40 +1,15 @@
-{
-    "intents": [
-        {
-            "tag":"inicio",
-            "patterns": [
-                "Ola", 
-                "Oi", 
-                "Ajuda", 
-                "Bom dia", 
-                "Boa tarde", 
-                "Boa noite"
-            ],
-            "responses":[
-                "Oi. Tudo bem?",
-                "Ola! Como vai?",
-                "Ola! Posso ajudar?",
-                "Qual o seu problema?"
-            ],
-            "context":[""]
-        },
-        {
-            "tag":"fim",
-            "patterns": [
-                "Tchau", 
-                "Obrigada", 
-                "Obrigado", 
-                "Valeu"
-            ],
-            "responses":[
-                "Tchau!",
-                "Espero que tenha ajudado!",
-                "Ate uma proxima!"
-            ],
-            "context":[""]
+[
+    
+    ["Qual a matéria de hoje?", { "entities":[[7, 14, "MATERIA"]]}],
+    ["Qual a aula de hoje?", { "entities":[[7, 11, "MATERIA"]]}],
+    ["Hoje eu tenho qual matéria?", { "entities":[[19, 27, "MATERIA"]]}],
+    ["Quais matérias de hoje?", { "entities":[[6, 14, "MATERIA_HOJE"], [18, 22, "MATERIA_HOJE"]]}],
+    ["Quais aulas de hoje?", { "entities":[[6, 10, "MATERIA_HOJE"],[17, 20, "MATERIA_HOJE"]]}],
+    ["Qual horário de aula?", { "entities":[[5, 12, "HORARIO"]]}],
+    ["Que horas começa a aula?", { "entities":[[4, 8, "HORARIO"]]}],
+    ["Até que horas vai a aula?", { "entities":[[0, 3, "HORARIO"], [8, 12, "HORARIO"]]}],
+    ["Em qual sala eu tenho aula?", { "entities":[[8, 12, "SALA"]]}],
+    ["Qual a sala de hoje?", { "entities":[[7, 11, "SALA"]]}],
+    ["Onde fica minha sala?", { "entities":[[16, 20, "SALA"]]}]
 
-        }
-        
-
-    ]
-}
+]
