@@ -51,6 +51,8 @@ def get_response(msg):
 #        print(chunk.root.text)
     for ent in doc.ents:
         print(ent.text, ent.label_)
+
+        # A PARTIR DAQUI JÁ TENHO AS ENT.LABEL_ QUE PRECISA PRA PROCURAR E MONTAR A RESPOSTA 
 #    X = bagOfWords(sentence, all_words)
 #    X = X.reshape(1, X.shape[0])
 #    X = torch.from_numpy(X).to(device)

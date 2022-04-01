@@ -1,0 +1,12 @@
+Criando configuração spacy
+
+python -m spacy init config --lang pt --pipeline ner config.cfg --force
+
+Treinar modelo
+
+python -m spacy train config.cfg --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
+
+python preprocess.py pt intents.json corpus/train.spacy
+
+python -m spacy train config.cfg --output ./training/ --paths.train ./corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 100 --gpu-id -1
+
