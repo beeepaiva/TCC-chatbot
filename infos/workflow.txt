@@ -1,0 +1,12 @@
+Entities
+-> Matéria [matéria, aula]
+
+-> Sala [sala, lugar, onde]
+
+-> Horário [horas, começa, termina, horário]
+
+-> Dia [hoje, amanhã, semana]
+
+-> Turma [semestre, turma]
+
+-> Patterns

@@ -1,0 +1,8 @@
+{
+    "items": {
+        "text": "Hoje sua aula é {0}", 
+        "intent": "dia", 
+        "entities": []
+      }
+
+}

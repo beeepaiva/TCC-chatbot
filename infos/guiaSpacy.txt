@@ -4,7 +4,7 @@ python -m spacy init config --lang pt --pipeline ner config.cfg --force
 
 Treinar modelo
 
-python -m spacy train config.cfg --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
+python -m spacy train config.cfg --output ./output --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
 
 python preprocess.py pt intents.json corpus/train.spacy
 

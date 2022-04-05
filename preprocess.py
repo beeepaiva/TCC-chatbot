@@ -11,9 +11,12 @@ nlp = spacy.load("pt_core_news_lg")
 def convert(lang: str, input_path: Path, output_path: Path):
     nlp = spacy.blank(lang)
     db = DocBin()
+
     for text, annot in srsly.read_json(input_path):
         doc = nlp.make_doc(text)
         ents = []
+        for token in doc:
+            print(token.text, token.tag_)
         for start, end, label in annot["entities"]:
             span = doc.char_span(start, end, label=label)
             if span is None:
