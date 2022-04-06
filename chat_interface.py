@@ -10,7 +10,7 @@ import random
 import torch
 import numpy
 from model import Neural
-from nlp_inicial import bagOfWords, tokenizacao
+from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -32,14 +32,20 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Bea"
-print("Em que posso ajudar?")
-print("Para encerrar digite 'sair'")
 
 def get_response(msg):
     sentence = tokenizacao(msg)
     X = bagOfWords(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
+    
+    entitiesQuestion = {}
+    doc = spacyEntities(msg)
+    for ent in doc.ents:
+        entitiesQuestion.update({ent.label_: ent.text})
+
+    # o que o usuario quer
+    # entitiesQuestion[]
     
     output = model(X)
     _, predicted = torch.max(output, dim=1)
@@ -48,9 +54,32 @@ def get_response(msg):
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
     
-    if prob.item() > 0.75:
-        for intent in intents["intents"]:
-            if tag == intent["tag"]:
-                return random.choice(intent['responses'])
-    else:
-        return "Não entendi o que disse"
+    ##Entity que deve estar presente 
+    ## - Semestre e dia
+    
+    dia = ""
+    turma = ""
+    if "dia" in entitiesQuestion.keys():
+        dia = entitiesQuestion["dia"]
+
+    if "turma" in entitiesQuestion.keys():
+        turma = entitiesQuestion["turma"]
+    #for entity in entitiesQuestion:
+    #    if entity in entitiesQuestion:
+    #        dia = entity["dia"]
+    #    if entity == "turma":
+    #        turma = entity
+        
+    if not dia:
+        return {"msg": "Quando?", "tag": intent["tag"], "prob": prob.item()}
+    if not turma:
+        return {"msg": "Qual a turma?", "tag": "", "prob": ""}
+
+    if dia & turma: 
+        if prob.item() > 0.75:
+            for intent in intents["intents"]:
+                if tag == intent["tag"]:
+                    #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
+                    return {"msg": random.choice(intent['responses']), "tag": intent["tag"], "prob": prob.item()}
+        else:
+            return {"msg": "Não entendi", "tag": "", "prob": ""}

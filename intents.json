@@ -24,7 +24,7 @@
                 "Tchau", 
                 "Obrigada", 
                 "Obrigado", 
-                "Valeu" 
+                "Valeu"
             ],
             "responses":[
                 "Tchau!",
@@ -32,6 +32,20 @@
                 "Ate uma proxima!"
             ],
             "context":[""]
+
+        },
+        {
+            "tag": "lugar",
+            "responses": [
+                "Sua sala é a {0}"
+            ]
+
+        },
+        {
+            "tag": "matéria",
+            "responses": [
+                "Sua matéria hoje é a {0}"
+            ]
 
         }
         

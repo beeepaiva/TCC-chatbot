@@ -22,3 +22,28 @@ https://encycolorpedia.pt/
 
 Tkinter (Interface)
 https://docs.python.org/3/library/tk.html
+
+
+-> Modo com interface
+Clone do projeto
+Criar ambiente virtual
+python -m venv venv
+.\venv\Scripts\activate.bat
+###Depois de ativar
+pip install Flask torch torchvision nltk
+
+$ (venv) python
+>>> import nltk
+>>> nltk.download('punkt')
+
+$ (venv) python train.py
+
+
+
+// MODO SPACY
+
+& c:/Users/beeep/Documents/TCC-chatbot/venv/Scripts/activate.ps1
+
+python preprocess.py
+
+python -m spacy train config.cfg --outpu ./output --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
