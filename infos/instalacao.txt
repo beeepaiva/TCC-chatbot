@@ -1,0 +1,13 @@
+python -m venv venv
+
+& c:/Users/beeep/Documents/TCC-chatbot/venv/Scripts/Activate.ps1 
+
+----
+TREINO PyTorch - Intents.json
+python train.py   
+
+----
+TREINO SpaCy Entities
+
+python preprocess.py 
+python -m spacy train config.cfg --output ./output --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
