@@ -11,10 +11,12 @@ import torch
 import numpy
 from model import Neural
 from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
+from nltk.stem.rslp import RSLPStemmer
+stPortugues = RSLPStemmer()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('intents.json', 'r') as f:
+with open('intents.json', encoding='utf-8') as f:
     intents = json.load(f)
     
 FILE = "data.pth"
@@ -57,7 +59,7 @@ def get_response(msg):
     ##Entity que deve estar presente 
     ## - Semestre e dia
     
-    dia = ""
+    """dia = ""
     turma = ""
     if "dia" in entitiesQuestion.keys():
         dia = entitiesQuestion["dia"]
@@ -66,6 +68,7 @@ def get_response(msg):
         turma = entitiesQuestion["turma"]
     else:
         turma = "primeiro"
+        """
     #for entity in entitiesQuestion:
     #    if entity in entitiesQuestion:
     #        dia = entity["dia"]
@@ -77,11 +80,11 @@ def get_response(msg):
     if not turma:
         return {"msg": "Qual a turma?", "tag": "", "prob": ""}
 """
-    if dia & turma: 
-        if prob.item() > 0.75:
-            for intent in intents["intents"]:
-                if tag == intent["tag"]:
+    #if dia & turma: 
+    if prob.item() > 0.75:
+        for intent in intents["intents"]:
+            if tag == intent["tag"]:
                     #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
-                    return {"msg": random.choice(intent['responses']), "tag": intent["tag"], "prob": prob.item()}
-        else:
-            return {"msg": "Não entendi", "tag": "", "prob": ""}
+                return {"msg": random.choice(intent['responses']), "tag": intent["tag"], "prob": prob.item()}
+    else:
+        return {"msg": "Não entendi", "tag": "", "prob": ""}
