@@ -64,17 +64,19 @@ def get_response(msg):
 
     if "turma" in entitiesQuestion.keys():
         turma = entitiesQuestion["turma"]
+    else:
+        turma = "primeiro"
     #for entity in entitiesQuestion:
     #    if entity in entitiesQuestion:
     #        dia = entity["dia"]
     #    if entity == "turma":
     #        turma = entity
         
-    if not dia:
+    """if not dia:
         return {"msg": "Quando?", "tag": intent["tag"], "prob": prob.item()}
     if not turma:
         return {"msg": "Qual a turma?", "tag": "", "prob": ""}
-
+"""
     if dia & turma: 
         if prob.item() > 0.75:
             for intent in intents["intents"]:

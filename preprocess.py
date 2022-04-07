@@ -1,12 +1,16 @@
-import srsly
 import typer
-import warnings
-from pathlib import Path
-from tqdm import tqdm
 import spacy
+import warnings
 from spacy.tokens import DocBin
+from spacy.util import minibatch, compounding
+from spacy.training import Example
 
-nlp = spacy.load("pt_core_news_lg")
+from transformers import AutoTokenizer  # Or BertTokenizer
+from transformers import AutoModelForPreTraining  # Or BertForPreTraining for loading pretraining heads
+from transformers import AutoModel  # or BertModel, for BERT without pretraining heads
+
+model = AutoModelForPreTraining.from_pretrained('neuralmind/bert-large-portuguese-cased')
+tokenizer = AutoTokenizer.from_pretrained('neuralmind/bert-large-portuguese-cased', do_lower_case=False)
 
 TRAIN_DATA = [
 ["Onde fica minha sala?",{"entities":[[0,4,"lugar"],[16,20,"sala"]]}],
@@ -28,7 +32,7 @@ def convert():
     lang = "pt"
     input_path = "./intents.json"
     output_path = "./corpus/train.spacy"
-    nlp = spacy.blank(lang)
+    nlp = spacy.blank("pt")
     db = DocBin()
 
     for text, annot in TRAIN_DATA:
@@ -43,7 +47,26 @@ def convert():
                 ents.append(span)
         doc.ents = ents
         db.add(doc)
-    db.to_disk(output_path)
+        db.to_disk(output_path)
+
+"""
+    for _, annotations in TRAIN_DATA:
+        for ent in annotations.get("entities"):
+            ner.add_label(ent[2])
+
+        # batch up the examples using spaCy's minibatch
+        batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
+        for batch in batches:
+            texts, annotations = zip(*batch)
+            example = []
+            losses = {}
+                # Update the model with iterating each text
+            for i in range(len(texts)):
+                doc = nlp.make_doc(texts[i])
+                example.append(Example.from_dict(doc, annotations[i]))
+                
+            # Update the model
+            nlp.update(example, drop=0.5, losses=losses)"""
 
 
 if __name__ == "__main__":

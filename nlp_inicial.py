@@ -25,14 +25,6 @@ def spacyEntities(msg):
     doc = nlp(msg)
     return doc
 
-def morpho(palavra):
-    tokens = word_tokenize(palavra.lower())
-    tag=pos_tag(tokens)
-    print(tag)
-
-    ne_tree = nltk.ne_chunk(tag)
-    print(ne_tree)
-
 def bagOfWords(fraseToken, todasPalavras):
     fraseToken = [stem(w) for w in fraseToken]
     bag = np.zeros(len(todasPalavras), dtype=np.float32)
