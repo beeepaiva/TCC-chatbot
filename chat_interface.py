@@ -12,14 +12,18 @@ import numpy
 from model import Neural
 from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
 from nltk.stem.rslp import RSLPStemmer
+import pandas
+import openpyxl
+from word2number import w2n
+
 stPortugues = RSLPStemmer()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('intents.json', encoding='utf-8') as f:
+with open('./database/intents.json', encoding='utf-8') as f:
     intents = json.load(f)
     
-FILE = "data.pth"
+FILE = "./database/data.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
@@ -56,30 +60,39 @@ def get_response(msg):
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
     
+    if prob.item() > 0.75 or context == "turma":
+        intencao = tag
+        
+        if "dia" in entitiesQuestion.keys():
+            dia = entitiesQuestion["dia"]
+        else:    
+            dia = "hoje"
+
+        if "turma" in entitiesQuestion.keys():
+            turma = entitiesQuestion["turma"]
+        if "turma" in entitiesQuestion.keys() and context != "turma":
+            context = "turma"
+            return {"msg": "De qual semestre?", "tag": "teste", "prob": "a"}    
+        if context:
+            turma = msg
+    
+        ## PROCURA NO EXCEL
+        wb = openpyxl.load_workbook('./database/database_responses.xlsx')
+        ws = wb["Planilha1"]
+
+        list_with_values=[]
+        for cell in ws[1]:
+            list_with_values.append((cell.value).lower())
+
+
     ##Entity que deve estar presente 
     ## - Semestre e dia
-    
-    """dia = ""
-    turma = ""
-    if "dia" in entitiesQuestion.keys():
-        dia = entitiesQuestion["dia"]
 
-    if "turma" in entitiesQuestion.keys():
-        turma = entitiesQuestion["turma"]
-    else:
-        turma = "primeiro"
-        """
     #for entity in entitiesQuestion:
-    #    if entity in entitiesQuestion:
+    #    if entity in entitiesQuestion
     #        dia = entity["dia"]
     #    if entity == "turma":
     #        turma = entity
-        
-    """if not dia:
-        return {"msg": "Quando?", "tag": intent["tag"], "prob": prob.item()}
-    if not turma:
-        return {"msg": "Qual a turma?", "tag": "", "prob": ""}
-"""
     #if dia & turma: 
     if prob.item() > 0.75:
         for intent in intents["intents"]:

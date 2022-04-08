@@ -5,6 +5,8 @@ from spacy.tokens import DocBin
 from spacy.util import minibatch, compounding
 from spacy.training import Example
 
+import json
+
 from transformers import AutoTokenizer  # Or BertTokenizer
 from transformers import AutoModelForPreTraining  # Or BertForPreTraining for loading pretraining heads
 from transformers import AutoModel  # or BertModel, for BERT without pretraining heads
@@ -12,7 +14,7 @@ from transformers import AutoModel  # or BertModel, for BERT without pretraining
 model = AutoModelForPreTraining.from_pretrained('neuralmind/bert-large-portuguese-cased')
 tokenizer = AutoTokenizer.from_pretrained('neuralmind/bert-large-portuguese-cased', do_lower_case=False)
 
-TRAIN_DATA = [
+'''TRAIN_DATA = [
 ["Onde fica minha sala?",{"entities":[[0,4,"lugar"],[16,20,"sala"]]}],
 ["Qual a sala de hoje?",{"entities":[[7,11,"sala"],[15,19,"dia"]]}],
 ["Em qual sala eu tenho aula?",{"entities":[[8,12,"sala"],[22,26,"materia"]]}],
@@ -26,14 +28,18 @@ TRAIN_DATA = [
 ["Qual a aula de hoje?",{"entities":[[7,11,"materia"],[15,19,"dia"]]}],
 ["Qual a matéria de hoje?",{"entities":[[7,14,"materia"],[18,22,"dia"]]}]
 
-]
+]'''
 
 def convert():
     lang = "pt"
-    input_path = "./intents.json"
+    input_path = "./database/entities_training.json"
     output_path = "./corpus/train.spacy"
     nlp = spacy.blank("pt")
     db = DocBin()
+
+    with open(input_path, encoding='utf-8') as f:
+        TRAIN_DATA = json.load(f)
+
 
     for text, annot in TRAIN_DATA:
         doc = nlp.make_doc(text)

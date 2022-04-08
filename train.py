@@ -11,7 +11,7 @@ from model import Neural
 from nltk.stem.rslp import RSLPStemmer
 stPortugues = RSLPStemmer()
 
-with open('intents.json', encoding='utf-8') as f:
+with open('./database/intents.json', encoding='utf-8') as f:
 	intents = json.load(f)
 
 all_words = []
@@ -111,7 +111,7 @@ data = {
         "tags": tags
         }
 
-FILE = "data.pth"
+FILE = "./database/data.pth"
 torch.save(data, FILE)
 
 print(f'FILE SAVED TO: {FILE}')
