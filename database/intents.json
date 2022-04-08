@@ -1,9 +1,9 @@
 {
     "intents": [
     {
-        "tag":"saudação",
+        "tag":"saudacao",
         "patterns": ["Oi"," Olá", "Bom dia", "Boa tarde", "Boa noite", "Preciso de ajuda", "Tudo bem?" ],
-        "responses":[""],
+        "responses":["Olá! Como posso ajudar?"],
         "context":[""]
     },
     {
@@ -19,7 +19,7 @@
             "Estou em dúvida sobre a sala", "Estou em dúvida sobre o lugar da aula", "Estou em dúvida sobre o lugar da aula", 
             "Estou em dúvida sobre o lugar da aula de hoje", "Estou em dúvida sobre o local da aula", "Estou em dúvida sobre o local da aula de hoje", 
             "Em que lugar vou ter aula hoje?", "Em que lugar eu vou ter aula?", "Qual é o lugar da minha aula hoje?", "Qual é o lugar da minha aula?", "Não sei o local da aula", "Não sei o lugar da aula", "Em que local eu vou ter aula hoje?", "Qual é o lugar da minha aula?", "Qual é o lugar da minha aula hoje?", "Qual é o local da minha aula?", "Qual é o local da minha aula hoje?", "Quero saber a sala de aula", "Quero saber a sala de aula de hoje", "Queria saber a sala de aula", "Queria saber a sala de aula de hoje", "Quero saber o local da aula", "Quero saber o local da aula de hoje", "Queria saber o local da aula", "Queria saber o local da aula de hoje", "Quero saber o lugar da aula", "Quero saber o lugar da aula de hoje", "Queria saber o lugar da aula", "Queria saber o lugar da aula de hoje", "Preciso de ajuda com a sala de aula", "Preciso de ajuda pra saber a sala de aula", "Preciso de ajuda pra saber a sala", "Preciso de ajuda pra saber a sala de aula de hoje", "Preciso de ajuda pra saber a sala de hoje", "Preciso de ajuda pra saber o lugar da aula", "Preciso de ajuda pra saber o lugar da aula de hoje", "Preciso de ajuda pra saber a sala de hoje"],
-        "responses":[""],
+        "responses":["Sua sala é "],
         "context":[""]
     },
     {
@@ -41,7 +41,7 @@
             "De que disciplina é a aula de hoje?", 
             "De que disciplina é a aula de amanhã?", "De que matéria é a aula de hoje?", 
             "De que matéria é a aula de amanhã?", "Do que que eu tenho aula?", "De que que é a aula?"],
-        "responses":[""],
+        "responses":["Sua aula é "],
         "context":[""]
 
     },
@@ -52,7 +52,7 @@
             "Que horas começa a aula?",
             "Quanto tempo tem a aula?",
             "Tem quanto tempo a aula de amanhã?" ],
-        "responses":[""],
+        "responses":["Seu horário é "],
         "context":[""]
 
     },
@@ -118,6 +118,9 @@
         "responses":[""],
         "context":[""]
 
+    },{
+        "tag": "semestre",
+        "patterns": ["1","2","3","4","5","6","7","8", "primeiro", "segundo", "terceiro", "quarto", "quinto", "sexto", "sétimo", "oitavo"]
     }
 ]
 }

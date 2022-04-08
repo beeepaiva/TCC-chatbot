@@ -7,14 +7,16 @@ Created on Mon Feb 21 14:46:52 2022
 
 import json
 import random
+from time import strftime
 import torch
 import numpy
 from model import Neural
 from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
 from nltk.stem.rslp import RSLPStemmer
-import pandas
+import pandas as pd
 import openpyxl
 from word2number import w2n
+from datetime import date
 
 stPortugues = RSLPStemmer()
 
@@ -38,6 +40,8 @@ model.load_state_dict(model_state)
 model.eval()
 
 bot_name = "Bea"
+context = ""
+conversation = {}
 
 def get_response(msg):
     sentence = tokenizacao(msg)
@@ -59,22 +63,21 @@ def get_response(msg):
     
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
+    conversation.update({tag: msg})
     
-    if prob.item() > 0.75 or context == "turma":
+    if prob.item() > 0.75:
         intencao = tag
-        
+        ##Deve estar presente 
+        ## - Semestre e dia
         if "dia" in entitiesQuestion.keys():
             dia = entitiesQuestion["dia"]
         else:    
-            dia = "hoje"
+            dia = date.today()
 
-        if "turma" in entitiesQuestion.keys():
-            turma = entitiesQuestion["turma"]
-        if "turma" in entitiesQuestion.keys() and context != "turma":
-            context = "turma"
-            return {"msg": "De qual semestre?", "tag": "teste", "prob": "a"}    
-        if context:
-            turma = msg
+        if "semestre" in entitiesQuestion.keys():
+            turma = entitiesQuestion["semestre"]
+        else:
+            return f"Qual seu semestre?"
     
         ## PROCURA NO EXCEL
         wb = openpyxl.load_workbook('./database/database_responses.xlsx')
@@ -84,20 +87,21 @@ def get_response(msg):
         for cell in ws[1]:
             list_with_values.append((cell.value).lower())
 
+        df = pd.read_excel('./database/database_responses.xlsx')
+        values = df[(df['Semestre'] == int(turma)) & (df['Dia'] == dia.strftime("%Y-%m-%d"))]
+        print(values)
 
-    ##Entity que deve estar presente 
-    ## - Semestre e dia
+        if not values.empty():
+            array_response = []
+            for val in values:
+                array_response.append(val)
 
-    #for entity in entitiesQuestion:
-    #    if entity in entitiesQuestion
-    #        dia = entity["dia"]
-    #    if entity == "turma":
-    #        turma = entity
-    #if dia & turma: 
-    if prob.item() > 0.75:
-        for intent in intents["intents"]:
-            if tag == intent["tag"]:
-                    #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
-                return {"msg": random.choice(intent['responses']), "tag": intent["tag"], "prob": prob.item()}
-    else:
-        return {"msg": "Não entendi", "tag": "", "prob": ""}
+        ## DESCOBRIR A INTENÇÃO PRINCIPAL E TRAZER SOMENTE A COLUNA DESEJADA 
+
+        if prob.item() > 0.75:
+            for intent in intents["intents"]:
+                if tag == intent["tag"]:
+                        #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
+                    return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent[tag]}, prob: {prob.item()}"
+        else:
+            return f"Não entendi"

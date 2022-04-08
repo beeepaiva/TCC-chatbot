@@ -10,6 +10,21 @@
     ["Quais aulas de hoje?",{"entities":[[6,11,"materia"],[15,19,"dia"]]}],
     ["Hoje eu tenho qual matéria?",{"entities":[[0,4,"dia"],[19,26,"materia"]]}],
     ["Qual a aula de hoje?",{"entities":[[7,11,"materia"],[15,19,"dia"]]}],
-    ["Qual a matéria de hoje?",{"entities":[[7,14,"materia"],[18,22,"dia"]]}]
+    ["Qual a matéria de hoje?",{"entities":[[7,14,"materia"],[18,22,"dia"]]}],
+    ["1",{"entities":[[0,1,"semestre"]]}],
+    ["2",{"entities":[[0,1,"semestre"]]}],
+    ["3",{"entities":[[0,1,"semestre"]]}],
+    ["4",{"entities":[[0,1,"semestre"]]}],
+    ["5",{"entities":[[0,1,"semestre"]]}],
+    ["6",{"entities":[[0,1,"semestre"]]}],
+    ["7",{"entities":[[0,1,"semestre"]]}],
+    ["8",{"entities":[[0,1,"semestre"]]}],
+    ["Oitavo semestre",{"entities":[[0,6,"semestre"]]}],
+    ["Setimo semestre",{"entities":[[0,6,"semestre"]]}],
+    ["To no sexto",{"entities":[[6,11,"semestre"]]}],
+    ["Eu sou do quinto semestre",{"entities":[[3,9,"semestre"],[10,16,"semestre"]]}],
+    ["to no terceiro",{"entities":[[6,14,"semestre"]]}],
+    ["Segundo ",{"entities":[[0,7,"semestre"]]}],
+    ["Sou do primeiro semestre",{"entities":[[7,15,"semestre"]]}]
     
     ]
