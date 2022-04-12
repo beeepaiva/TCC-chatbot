@@ -1,0 +1,33 @@
+---To Do's
+
+--- Tratativas (Be)
+
+- Tratar datas
+- Criar arrays (Sala, Aula e Horario) e fazer Distinct
+- Montar estutura patterns e respostas fixas
+
+
+--- API E Publicação (Bre)
+
+- Fuzzy (PyTorch)
+- Montar API e Publicar
+- Deixar o bot rodar e salvar todas as perguntas que ele não entender em um arquivo
+- Montar estutura patterns e respostas fixas
+
+
+---Perfumaria
+
+- Manter contexto* checar id da sessão
+Tipo 1 -legal, mas non sense-
+	-> Perguntar somente uma vez o semestre
+	-> Pessoa pergunta "Qual aula?" - responder somente aula - "E que sala?" - respomder somente sala - (Esquema de conversa) 
+
+Tipo 2 -necessario- 
+	->    - "Que aula eu tenho hoje?"
+		- Pergunta semestre e Responde tudo ( OK )
+		- "E amanhã?"
+		Entender que ele está refazendo a pergunta anterior e somente querendo trocar o dia
+		- Já tem o semestre e troca somente o dia para responder (TO DO)
+
+- .bat train.py
+- Easter eggs
