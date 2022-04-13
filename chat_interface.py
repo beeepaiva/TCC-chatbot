@@ -106,11 +106,13 @@ def get_response(msg):
                 if next(iter(conversation)) == intent["tag"]:
                             #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
                     conversation.clear()
-                    return f"Mensagem: {intent['responses']} {arrayResponse['Aula'].lower()}, na sala {arrayResponse['Sala']}, tag: {intent['tag']}, prob: {prob.item()}"
+                    #return f"Mensagem: {intent['responses']} {arrayResponse['Aula'].lower()}, na sala {arrayResponse['Sala']}, tag: {intent['tag']}, prob: {prob.item()}"
+                    return f"A sua aula é {arrayResponse['Aula'].lower()}, na sala {arrayResponse['Sala']}"
             ## SE NAO FOR BUSCAR CONTEUDO DINAMICO
         else:
             for intent in intents["intents"]:
                 if tag == intent["tag"]:
-                    return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent['tag']}, prob: {prob.item()}"
+                    #return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent['tag']}, prob: {prob.item()}"
+                    return f"Mensagem: {random.choice(intent['responses'])}"
     else:
         return f"Não entendi, mas você provavelmente pode encontrar essa informação acessando o site! https://www.sp.senac.br/ :)"

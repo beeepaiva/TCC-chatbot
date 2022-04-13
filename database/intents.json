@@ -13,7 +13,7 @@
             "Estou em dúvida sobre a sala", "Estou em dúvida sobre o lugar da aula", "Estou em dúvida sobre o lugar da aula", 
             "Estou em dúvida sobre o lugar da aula de hoje", "Estou em dúvida sobre o local da aula", "Estou em dúvida sobre o local da aula de hoje", 
             "Em que lugar vou ter aula hoje?", "Em que lugar eu vou ter aula?", "Qual é o lugar da minha aula hoje?", "Qual é o lugar da minha aula?", "Não sei o local da aula", "Não sei o lugar da aula", "Em que local eu vou ter aula hoje?", "Qual é o lugar da minha aula?", "Qual é o lugar da minha aula hoje?", "Qual é o local da minha aula?", "Qual é o local da minha aula hoje?", "Quero saber a sala de aula", "Quero saber a sala de aula de hoje", "Queria saber a sala de aula", "Queria saber a sala de aula de hoje", "Quero saber o local da aula", "Quero saber o local da aula de hoje", "Queria saber o local da aula", "Queria saber o local da aula de hoje", "Quero saber o lugar da aula", "Quero saber o lugar da aula de hoje", "Queria saber o lugar da aula", "Queria saber o lugar da aula de hoje", "Preciso de ajuda com a sala de aula", "Preciso de ajuda pra saber a sala de aula", "Preciso de ajuda pra saber a sala", "Preciso de ajuda pra saber a sala de aula de hoje", "Preciso de ajuda pra saber a sala de hoje", "Preciso de ajuda pra saber o lugar da aula", "Preciso de ajuda pra saber o lugar da aula de hoje", "Preciso de ajuda pra saber a sala de hoje"],
-        "responses":"Sua sala é ",
+        "responses":"",
         "context":[""]
     },
     {
@@ -35,31 +35,27 @@
             "De que disciplina é a aula de hoje?", 
             "De que disciplina é a aula de amanhã?", "De que matéria é a aula de hoje?", 
             "De que matéria é a aula de amanhã?", "Do que que eu tenho aula?", "De que que é a aula?"],
-        "responses":"Sua aula é ",
+        "responses":"",
         "context":[""]
 
     },
     {
-        "tag":"descobrir_horario",
-        "patterns": ["Qual é o horário da aula de hoje?", 
-            "Até que horas vai a aula?", 
-            "Que horas começa a aula?",
-            "Quanto tempo tem a aula?",
-            "Tem quanto tempo a aula de amanhã?" ],
-        "responses":"Seu horário é ",
-        "context":[""]
-
-    },
-    {
-        "tag":"estagio",
-        "patterns": ["O estágio é obrigatório?", 
+        "tag":"estagio_geral",
+        "patterns": ["Quais documentos preciso enviar pra fazer o estágio?", 
             "Até quando posso fazer estágio?", 
-            "Quantas horas preciso fazer de estágio?"],
-        "responses":["teste estagio",
-            "teste estagio 2",
-            "teste estagio 3"],
+            "Quantas horas preciso fazer de estágio?", "Posso realizar dois estágios?", "Onde encontro os documentos pro estágios?"],
+        "responses":["Para dúvidas relacionadas a documentação de estágio ou horas, você pode conversar com o coordenador de estágios. Após se logar no portal do Senac www.sp.senac.br, clicar em Ambiente Virtual de Aprendizagem > Ambiente Virtual. Na aba Coordenação, clicar no link com o nome completo do seu curso >Estágio> Orientações de Estágio> Orientação Individual."],
         "context":[""]
 
+    },
+    {
+        "tag":"frequencia",
+        "patterns": ["Quantas faltas posso ter?", 
+            "Posso faltar quantas vezes?", 
+            "Quanto de frequencia preciso ter pra passar?", 
+            "Se eu faltar muito eu passo?"],
+        "responses":["É necessário ter frequência igual ou superior a 75% (setenta e cinco por cento) da carga horária em cada componente curricular. A frequência do aluno consiste em sua participação nas aulas e/ou outras atividades programadas em cada componente curricular, registrada pelo professor no diário de classe"],
+        "context":[""]
     },
     {
         "tag":"campus",
@@ -73,23 +69,12 @@
 
     },
     {
-        "tag":"curso",
-        "patterns": ["Quantos semestres têm meu curso?", 
-            "Quais são as matérias do meu curso?", "Quem é o coordenador do meu curso?", 
-            "Em quais períodos meu curso está disponível?", "Posso pedir transferência do curso?", 
-            "Como faço para trancar o curso?", "O que fazer para trancar o curso?", 
-            "Como posso voltar para o curso depois de trancar?"],
-        "responses":["teste curso 1, teste 2"],
-        "context":[""]
-
-    },
-    {
         "tag":"bolsas_de_estudo",
         "patterns": ["Quais bolsas de estudos estão disponíveis para o curso?", 
             "Quais são os pré-requisitos pra conseguir a bolsa?", 
             "Quanto tenho de desconto com a minha bolsa?", 
             "O que preciso fazer para manter minha bolsa?", "Posso pegar DP tendo bolsa?"],
-        "responses":["teste bolsa11", "teste bolsa estudo"],
+        "responses":["Existem programas de bolsas de estudo no Senac! Para saber mais você pode acessar o site https://www.sp.senac.br/graduacao/bolsas-descontos-e-parcelamento/ "],
         "context":[""]
 
     },
@@ -105,17 +90,44 @@
     },
     {
         "tag":"atividades_complementares",
-        "patterns": ["É obrigatório fazer atividades complementares?", "Quantas horas preciso fazer de atividades complementares?", "Consigo me formar sem fazer atividades complementares?", "O que são atividades complementares?", "Por que tenho que fazer atividades?", "Como entrego minhas horas complementares?"],
+        "patterns": ["É obrigatório fazer atividades complementares?", 
+            "Quantas horas preciso fazer de atividades complementares?", 
+            "Consigo me formar sem fazer atividades complementares?", "O que são atividades complementares?", 
+            "Por que tenho que fazer atividades?", "Como entrego minhas horas complementares?"],
         "responses":["teste atividades", "teste atv estudo"],
         "context":[""]
 
     },
     {
         "tag":"materias_curso",
-        "patterns": ["Quais são as matérias do meu curso?", "Quais são as matérias do segundo semestre do meu curso?", "Todas as matérias do curso são obrigatórias?", "Qual é a carga horária das matérias do curso?", "Tenho opção de eletivas no curso?", "Tenho matérias práticas no curso?", "Quais são as disciplinas do curso?", "Quais são as disciplinas do terceiro semestre do meu curso?"],
-        "responses":[""],
+        "patterns": ["Quais são as matérias do meu curso?", 
+            "Quais são as matérias do segundo semestre do meu curso?", 
+            "Todas as matérias do curso são obrigatórias?", 
+            "Qual é a carga horária das matérias do curso?", 
+            "Tenho opção de eletivas no curso?", "Tenho matérias práticas no curso?", 
+            "Quais são as disciplinas do curso?", 
+            "Quais são as disciplinas do terceiro semestre do meu curso?"],
+        "responses":["Para saber mais sobre as informações sobre o curso, suas matérias e áreas em que poderá atuar após se formar, veja: https://www.sp.senac.br/graduacao/bacharelado-em-ciencia-da-computacao"],
         "context":[""]
 
+    },
+    {
+        "tag":"rematricula_contato",
+        "patterns": ["Estou com problema na rematrícula, como faço para entrar em contato?", "Como entro em contato para resolver minha rematricula?", "Minha rematricula ta com problema, o que eu faço?"],
+        "responses":["O atendimento será feito exclusivamente pelos chamados, na área exclusiva do aluno: > Formulário de Solicitações > Rematrícula. Os atendimentos não serão realizados por contato telefônico."],
+        "context":[""]
+    },
+    {
+        "tag":"eletiva_matricula",
+        "patterns": ["Como devo fazer a matrícula na disciplina eletiva?", "Fiz a matrícula na disciplina eletiva, posso mudar?"],
+        "responses":["Para os cursos que possuem disciplinas eletivas, a matrícula será durante o período estabelecido para a rematrícula e não é permitida a mudança de eletiva, salvo se a disciplina não atingir um número mínimo de matriculados ela será cancelada e a coordenação dará outras opções de disciplinas para escolha."],
+        "context":[""]
+    },
+    {
+        "tag":"trancar_matricula",
+        "patterns": ["Eu não aguento mais, quero trancar o curso", "Como trancar a matricula?", "Quero trancar o curso, o que eu faço?"],
+        "responses":["Você não é o único ;)", "O caminho para realizar a solicitação pela área exclusiva do aluno é: Formulário de Solicitações > Trancamento de Matrícula"],
+        "context":[""]
     },
     {
         "tag":"saudacao",
@@ -123,5 +135,6 @@
         "responses":["Olá! Como posso ajudar?"],
         "context":[""]
     }
+
 ]
 }
