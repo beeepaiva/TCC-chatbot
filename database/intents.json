@@ -1,0 +1,127 @@
+{
+    "intents": [
+    {
+        "tag":"descobrir_sala",
+        "patterns": ["Qual é a minha sala?", 
+            "Em que sala eu vou ter aula?", 
+            "Em que sala eu vou ter aula hoje?", 
+            "Não sei minha sala", 
+            "Não sei minha sala de aula", 
+            "Não sei a sala de hoje", "Não sei a sala da aula de hoje", 
+            "Não sei a sala", "Não sei o lugar da aula de hoje", "To em dúvida sobre a sala", "To em dúvida sobre a sala de aula", 
+            "Estou em dúvida sobre a minha sala", "Estou em dúvida sobre a minha sala de aula", "Estou em dúvida sobre a sala de aula", 
+            "Estou em dúvida sobre a sala", "Estou em dúvida sobre o lugar da aula", "Estou em dúvida sobre o lugar da aula", 
+            "Estou em dúvida sobre o lugar da aula de hoje", "Estou em dúvida sobre o local da aula", "Estou em dúvida sobre o local da aula de hoje", 
+            "Em que lugar vou ter aula hoje?", "Em que lugar eu vou ter aula?", "Qual é o lugar da minha aula hoje?", "Qual é o lugar da minha aula?", "Não sei o local da aula", "Não sei o lugar da aula", "Em que local eu vou ter aula hoje?", "Qual é o lugar da minha aula?", "Qual é o lugar da minha aula hoje?", "Qual é o local da minha aula?", "Qual é o local da minha aula hoje?", "Quero saber a sala de aula", "Quero saber a sala de aula de hoje", "Queria saber a sala de aula", "Queria saber a sala de aula de hoje", "Quero saber o local da aula", "Quero saber o local da aula de hoje", "Queria saber o local da aula", "Queria saber o local da aula de hoje", "Quero saber o lugar da aula", "Quero saber o lugar da aula de hoje", "Queria saber o lugar da aula", "Queria saber o lugar da aula de hoje", "Preciso de ajuda com a sala de aula", "Preciso de ajuda pra saber a sala de aula", "Preciso de ajuda pra saber a sala", "Preciso de ajuda pra saber a sala de aula de hoje", "Preciso de ajuda pra saber a sala de hoje", "Preciso de ajuda pra saber o lugar da aula", "Preciso de ajuda pra saber o lugar da aula de hoje", "Preciso de ajuda pra saber a sala de hoje"],
+        "responses":"Sua sala é ",
+        "context":[""]
+    },
+    {
+        "tag":"descobrir_materia",
+        "patterns": ["Qual matéria eu tenho hoje?", 
+            "Qual é a minha aula de hoje?", 
+            "Qual é a minha grade horária?", 
+            "Qual é a matéria de hoje?", 
+            "Qual aula eu tenho hoje?", 
+            "Qual é a disciplina de hoje?", 
+            "A aula de hoje é de qual disciplina?", 
+            "Qual matéria eu tenho amanhã?", 
+            "Qual é a matéria de amanhã?", 
+            "Qual é minha aula de amanhã?", 
+            "Que aula eu tenho amanhã?", 
+            "Qual é a disciplina de amanhã?", 
+            "Tenho aula do que?",
+            "Que disciplina eu tenho amanhã?", 
+            "De que disciplina é a aula de hoje?", 
+            "De que disciplina é a aula de amanhã?", "De que matéria é a aula de hoje?", 
+            "De que matéria é a aula de amanhã?", "Do que que eu tenho aula?", "De que que é a aula?"],
+        "responses":"Sua aula é ",
+        "context":[""]
+
+    },
+    {
+        "tag":"descobrir_horario",
+        "patterns": ["Qual é o horário da aula de hoje?", 
+            "Até que horas vai a aula?", 
+            "Que horas começa a aula?",
+            "Quanto tempo tem a aula?",
+            "Tem quanto tempo a aula de amanhã?" ],
+        "responses":"Seu horário é ",
+        "context":[""]
+
+    },
+    {
+        "tag":"estagio",
+        "patterns": ["O estágio é obrigatório?", 
+            "Até quando posso fazer estágio?", 
+            "Quantas horas preciso fazer de estágio?"],
+        "responses":["teste estagio",
+            "teste estagio 2",
+            "teste estagio 3"],
+        "context":[""]
+
+    },
+    {
+        "tag":"campus",
+        "patterns": ["No Senac tem academia?", 
+            "Tem praça de alimentação no Senac?", 
+            "Quantas praças de alimentação tem o Senac?", 
+            "O Senac tem sala de costura?", "O Senac tem estacionamento?", 
+            "Que horas o Senac abre?", "Que horas o Senac fecha?"],
+        "responses":["teste campus 1", "teste campus 2"],
+        "context":[""]
+
+    },
+    {
+        "tag":"curso",
+        "patterns": ["Quantos semestres têm meu curso?", 
+            "Quais são as matérias do meu curso?", "Quem é o coordenador do meu curso?", 
+            "Em quais períodos meu curso está disponível?", "Posso pedir transferência do curso?", 
+            "Como faço para trancar o curso?", "O que fazer para trancar o curso?", 
+            "Como posso voltar para o curso depois de trancar?"],
+        "responses":["teste curso 1, teste 2"],
+        "context":[""]
+
+    },
+    {
+        "tag":"bolsas_de_estudo",
+        "patterns": ["Quais bolsas de estudos estão disponíveis para o curso?", 
+            "Quais são os pré-requisitos pra conseguir a bolsa?", 
+            "Quanto tenho de desconto com a minha bolsa?", 
+            "O que preciso fazer para manter minha bolsa?", "Posso pegar DP tendo bolsa?"],
+        "responses":["teste bolsa11", "teste bolsa estudo"],
+        "context":[""]
+
+    },
+    {
+        "tag":"dps",
+        "patterns": ["Quantas DPs eu posso pegar?", "Com quantas DP eu repito?", 
+            "Quanto custa uma DP?", "Quando posso cursar uma DP?", 
+            "Posso pegar DP de uma matéria que já estou fazendo DP?", 
+            "Quantas vezes posso pegar a mesma DP?"],
+        "responses":["teste dp", "teste dp"],
+        "context":[""]
+
+    },
+    {
+        "tag":"atividades_complementares",
+        "patterns": ["É obrigatório fazer atividades complementares?", "Quantas horas preciso fazer de atividades complementares?", "Consigo me formar sem fazer atividades complementares?", "O que são atividades complementares?", "Por que tenho que fazer atividades?", "Como entrego minhas horas complementares?"],
+        "responses":["teste atividades", "teste atv estudo"],
+        "context":[""]
+
+    },
+    {
+        "tag":"materias_curso",
+        "patterns": ["Quais são as matérias do meu curso?", "Quais são as matérias do segundo semestre do meu curso?", "Todas as matérias do curso são obrigatórias?", "Qual é a carga horária das matérias do curso?", "Tenho opção de eletivas no curso?", "Tenho matérias práticas no curso?", "Quais são as disciplinas do curso?", "Quais são as disciplinas do terceiro semestre do meu curso?"],
+        "responses":[""],
+        "context":[""]
+
+    },
+    {
+        "tag":"saudacao",
+        "patterns": ["Oi"," Olá", "Bom dia", "Boa tarde", "Boa noite", "Preciso de ajuda", "Tudo bem?" ],
+        "responses":["Olá! Como posso ajudar?"],
+        "context":[""]
+    }
+]
+}

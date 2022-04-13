@@ -13,16 +13,11 @@ CORS(app)
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")
-    #pega do chat que já foi treinado com os dados
-    getResponse = get_response(text)
-    #if getResponse != "Não entendi o que disse":
-    response = getResponse["msg"]
-    prob = getResponse["prob"]
-    tag = getResponse["tag"]
-    message = {"resposta": response, "prob": prob, "tag": tag}
-    return jsonify(message)
-    #else:
-    #    return getResponse
+
+    response = get_response(text)
+
+    return jsonify(response)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
