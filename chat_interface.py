@@ -73,8 +73,6 @@ def get_response(msg):
     prob = probs[0][predicted.item()]
     
     conversation.update({tag: msg})
-    
-    
 
     ###### SE FOR DESCOBRIR SOBRE SALA, HORARIO OU AULAS
     if prob.item() > 0.75:
