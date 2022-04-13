@@ -47,3 +47,4 @@ $ (venv) python train.py
 python preprocess.py
 
 python -m spacy train config.cfg --outpu ./output --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
+

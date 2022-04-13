@@ -14,8 +14,6 @@ from model import Neural
 from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
 from nltk.stem.rslp import RSLPStemmer
 import pandas as pd
-import openpyxl
-from word2numberi18n import w2n
 from datetime import date, timedelta
 from actions import convertNum, convertDate
 
@@ -27,7 +25,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('./database/intents.json', encoding='utf-8') as f:
     intents = json.load(f)
     
-instance = w2n.W2N(lang_param="pt")  
 FILE = "./database/data.pth"
 data = torch.load(FILE)
 
