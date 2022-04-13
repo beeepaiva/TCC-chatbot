@@ -1,12 +1,10 @@
 import numpy as np
 import nltk
-from nltk.data import load
-from nltk.stem.api import StemmerI
 import nltk.corpus
-from nltk import word_tokenize,pos_tag
 from nltk.stem.rslp import RSLPStemmer
-stPortugues = RSLPStemmer()
 import spacy
+
+stPortugues = RSLPStemmer()
 
 nlp = spacy.load("./output/model-best")
 
@@ -16,11 +14,10 @@ def tokenizacao(frase):
 	return nltk.word_tokenize(frase)
 
 def stem(palavra):
-	return  stPortugues.stem(palavra.lower())
+	return stPortugues.stem(palavra.lower())
 
 def lemma(palavra):
     return nltk.WordNetLemmatizer(palavra)
-
 
 def spacyEntities(msg):
     doc = nlp(msg)

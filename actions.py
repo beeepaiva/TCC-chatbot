@@ -28,20 +28,20 @@ def convertDate(text):
     elif text == "depois de amanhã" or text == "depois de amanha":
         return date.today()+ timedelta(days=2)
     elif text == "segunda" or text == "2ª":
-        return proximoDia(date.today(), 0)
+        return nextDayOf(date.today(), 0)
     elif text == "terça" or text == "terca" or text == "3ª":
-        return proximoDia(date.today(), 1)
+        return nextDayOf(date.today(), 1)
     elif text == "quarta" or text == "4ª":
-        return proximoDia(date.today(), 2)
+        return nextDayOf(date.today(), 2)
     elif text == "quinta" or text == "5ª":
-        return proximoDia(date.today(), 3)
+        return nextDayOf(date.today(), 3)
     elif text == "sexta" or text == "6ª":
-        return proximoDia(date.today(), 4)
+        return nextDayOf(date.today(), 4)
     else:
         return 0
 
-def proximoDia(d, weekday):
-    proximo = weekday - d.weekday()
-    if proximo <= 0:
-        proximo += 7
-    return d + timedelta(proximo)
+def nextDayOf(d, weekday):
+    ahead = weekday - d.weekday()
+    if ahead <= 0:
+        ahead += 7
+    return d + timedelta(ahead)

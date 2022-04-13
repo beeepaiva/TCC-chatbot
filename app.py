@@ -4,12 +4,8 @@ from chat_interface import get_response
 
 app = Flask(__name__)
 CORS(app)
-#renderizacao do html
-#@app.get("/")
-#def index_get():
-#    return render_template("./index.html")
 
-#prediction
+#function called by the html to get the response from chatbot
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")

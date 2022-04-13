@@ -2,11 +2,10 @@ import typer
 import spacy
 import warnings
 from spacy.tokens import DocBin
-from spacy.util import minibatch, compounding
-from spacy.training import Example
 
 import json
 
+##Function to convert json data to .spacy data to use as entity training 
 def convert():
     lang = "pt"
     input_path = "./database/entities_training.json"
@@ -16,7 +15,6 @@ def convert():
 
     with open(input_path, encoding='utf-8') as f:
         TRAIN_DATA = json.load(f)
-
 
     for text, annot in TRAIN_DATA:
         doc = nlp.make_doc(text)
@@ -31,7 +29,6 @@ def convert():
         doc.ents = ents
         db.add(doc)
         db.to_disk(output_path)
-''
 
 if __name__ == "__main__":
     typer.run(convert)

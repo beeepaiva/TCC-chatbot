@@ -9,12 +9,11 @@ import json
 import random
 from time import strftime
 import torch
-import numpy
 from model import Neural
 from nlp_inicial import bagOfWords, tokenizacao, spacyEntities
 from nltk.stem.rslp import RSLPStemmer
 import pandas as pd
-from datetime import date, timedelta
+from datetime import date
 from actions import convertNum, convertDate
 
 
@@ -84,7 +83,7 @@ def get_response(msg):
             if "semestre" in entitiesQuestion.keys():
                 turma = convertNum(entitiesQuestion["semestre"])
             else:
-                return f"Digite o número do seu semestre?"
+                return f"Qual seu semestre?"
 
             ## PROCURA NO EXCEL
             df = pd.read_excel('./database/database_responses.xlsx')
@@ -114,4 +113,4 @@ def get_response(msg):
                 if tag == intent["tag"]:
                     return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent['tag']}, prob: {prob.item()}"
     else:
-        return f"Não entendi"
+        return f"Não entendi, mas você provavelmente pode encontrar essa informação acessando o site! https://www.sp.senac.br/ :)"
