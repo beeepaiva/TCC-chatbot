@@ -27,24 +27,29 @@ de forma rápida e prática.
   python -m venv venv
   .\venv\Scripts\activate.ps1
 ```
-    
-3 - Para treinar a rede neural com base no intents.json
+
+3 - Dentro do ambiente virtual, fazer o download dos pacotes necessários via pip
+```bash
+  pip install -r requirements.txt
+```   
+
+4 - Para treinar a rede neural com base no intents.json
 ```bash
   python train.py
 ```
 
-4 - Para treinar a identificação de entidades com o spaCy
+5 - Para treinar a identificação de entidades com o spaCy
 ```bash
   python preprocess.py
   python -m spacy train config.cfg --outpu ./output --paths.train ./corpus/train.spacy --paths.dev ./corpus/dev.spacy
 ```
 
-5 - Rodar o serviço do Flask
+6 - Rodar o serviço do Flask
 ```bash
   python app.py
 ```
 
-6 - Por enquanto, o projeto rodando StandAlone, após rodar o serviço do Flask basta apenas abrir o index.html
+7 - Por enquanto, o projeto rodando StandAlone, após rodar o serviço do Flask basta apenas abrir o index.html
 ## Autores
 
 - [@beeepaiva](https://www.github.com/beeepaiva)
