@@ -17,12 +17,8 @@ import pandas as pd
 import openpyxl
 from word2numberi18n import w2n
 from datetime import date, timedelta
-from text_to_num import text2num
-from text_to_num import alpha2digit
-from text_to_num.lang.portuguese import OrdinalsMerger
+from actions import convertNum, convertDate
 
-omg = OrdinalsMerger()
-USE_PT_ORDINALS_MERGER = True
 
 stPortugues = RSLPStemmer()
 
@@ -74,58 +70,51 @@ def get_response(msg):
     
     conversation.update({tag: msg})
 
-    ###### SE FOR DESCOBRIR SOBRE SALA, HORARIO OU AULAS
+   
     if prob.item() > 0.75:
         intencao = tag
-        ##Deve estar presente 
-        ## - Semestre e dia
-        #if "dia" not in entitiesStorage.keys():
-        if "dia" in entitiesQuestion.keys():
-            ### Tratativa de datas (Tem outra forma????)
-            if entitiesQuestion["dia"] == "amanhã":
-                dia = date.today()+ timedelta(days=1)
-            if entitiesQuestion["dia"] == "hoje":
-                dia = date.today()
-                #dia = entitiesQuestion["dia"]
-        else:    
-            dia = date.today()
-
-    #    entitiesStorage.update({'dia': dia})
-
-        #if "semestre" not in entitiesStorage.keys():
-        if "semestre" in entitiesQuestion.keys():
-            turma = entitiesQuestion["semestre"]
-        else:
-            return f"Digite o número do seu semestre?"
-
-        #entitiesStorage.update({'semestre': turma})
-        ## PROCURA NO EXCEL
-
-        df = pd.read_excel('./database/database_responses.xlsx')
-        values = df[(df['Semestre'] == int(turma)) & (df['Dia'] == dia.strftime("%Y-%m-%d"))]
-        print(values)
-
-        ## DESCOBRIR A INTENÇÃO PRINCIPAL E TRAZER SOMENTE A COLUNA DESEJADA 
-        if not values.empty:
-            i = 0
-            arrayResponse = {}
-            array_responseAula = {}
-            array_responseSala = {}
-            array_responseHorario = {}
-            while i < len(values.index):
-                arrayResponse.update({
-                    "Aula": values['Aula'].values[i],
-                    "Sala": values['Sala'].values[i],
-                    "Horario":""
-                })
-                i += 1
         
+        ###### SE FOR DESCOBRIR SOBRE SALA, HORARIO OU AULAS
+        if {key:val for key, val in conversation.items() 
+                   if key.startswith("descobrir_")}:
+            ##Deve estar presente 
+            ## - Semestre e dia
+            if "dia" in entitiesQuestion.keys():
+                dia = convertDate(entitiesQuestion["dia"])
+            else:    
+                dia = date.today()
 
-        if prob.item() > 0.75:
+            if "semestre" in entitiesQuestion.keys():
+                turma = convertNum(entitiesQuestion["semestre"])
+            else:
+                return f"Digite o número do seu semestre?"
+
+            ## PROCURA NO EXCEL
+            df = pd.read_excel('./database/database_responses.xlsx')
+            values = df[(df['Semestre'] == int(turma)) & (df['Dia'] == dia.strftime("%Y-%m-%d"))]
+
+            ## DESCOBRIR A INTENÇÃO PRINCIPAL E TRAZER SOMENTE A COLUNA DESEJADA 
+            if not values.empty:
+                i = 0
+                arrayResponse = {}
+                while i < len(values.index):
+                    arrayResponse.update({
+                        "Aula": values['Aula'].values[i],
+                        "Sala": values['Sala'].values[i],
+                        "Horario": values['Horário'].values[i]
+                    })
+                    i += 1
+
+            
             for intent in intents["intents"]:
                 if next(iter(conversation)) == intent["tag"]:
-                        #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
+                            #Retornando a mensagem, a tag(intencao) e probabilidade da resposta
                     conversation.clear()
                     return f"Mensagem: {intent['responses']} {arrayResponse['Aula'].lower()}, na sala {arrayResponse['Sala']}, tag: {intent['tag']}, prob: {prob.item()}"
+            ## SE NAO FOR BUSCAR CONTEUDO DINAMICO
         else:
-            return f"Não entendi"
+            for intent in intents["intents"]:
+                if tag == intent["tag"]:
+                    return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent['tag']}, prob: {prob.item()}"
+    else:
+        return f"Não entendi"

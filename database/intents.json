@@ -1,12 +1,6 @@
 {
     "intents": [
     {
-        "tag":"saudacao",
-        "patterns": ["Oi"," Olá", "Bom dia", "Boa tarde", "Boa noite", "Preciso de ajuda", "Tudo bem?" ],
-        "responses":["Olá! Como posso ajudar?"],
-        "context":[""]
-    },
-    {
         "tag":"descobrir_sala",
         "patterns": ["Qual é a minha sala?", 
             "Em que sala eu vou ter aula?", 
@@ -61,7 +55,9 @@
         "patterns": ["O estágio é obrigatório?", 
             "Até quando posso fazer estágio?", 
             "Quantas horas preciso fazer de estágio?"],
-        "responses":[""],
+        "responses":["teste estagio",
+            "teste estagio 2",
+            "teste estagio 3"],
         "context":[""]
 
     },
@@ -72,7 +68,7 @@
             "Quantas praças de alimentação tem o Senac?", 
             "O Senac tem sala de costura?", "O Senac tem estacionamento?", 
             "Que horas o Senac abre?", "Que horas o Senac fecha?"],
-        "responses":[""],
+        "responses":["teste campus 1", "teste campus 2"],
         "context":[""]
 
     },
@@ -83,7 +79,7 @@
             "Em quais períodos meu curso está disponível?", "Posso pedir transferência do curso?", 
             "Como faço para trancar o curso?", "O que fazer para trancar o curso?", 
             "Como posso voltar para o curso depois de trancar?"],
-        "responses":[""],
+        "responses":["teste curso 1, teste 2"],
         "context":[""]
 
     },
@@ -93,7 +89,7 @@
             "Quais são os pré-requisitos pra conseguir a bolsa?", 
             "Quanto tenho de desconto com a minha bolsa?", 
             "O que preciso fazer para manter minha bolsa?", "Posso pegar DP tendo bolsa?"],
-        "responses":[""],
+        "responses":["teste bolsa11", "teste bolsa estudo"],
         "context":[""]
 
     },
@@ -103,14 +99,14 @@
             "Quanto custa uma DP?", "Quando posso cursar uma DP?", 
             "Posso pegar DP de uma matéria que já estou fazendo DP?", 
             "Quantas vezes posso pegar a mesma DP?"],
-        "responses":[""],
+        "responses":["teste dp", "teste dp"],
         "context":[""]
 
     },
     {
         "tag":"atividades_complementares",
         "patterns": ["É obrigatório fazer atividades complementares?", "Quantas horas preciso fazer de atividades complementares?", "Consigo me formar sem fazer atividades complementares?", "O que são atividades complementares?", "Por que tenho que fazer atividades?", "Como entrego minhas horas complementares?"],
-        "responses":[""],
+        "responses":["teste atividades", "teste atv estudo"],
         "context":[""]
 
     },
@@ -120,6 +116,12 @@
         "responses":[""],
         "context":[""]
 
+    },
+    {
+        "tag":"saudacao",
+        "patterns": ["Oi"," Olá", "Bom dia", "Boa tarde", "Boa noite", "Preciso de ajuda", "Tudo bem?" ],
+        "responses":["Olá! Como posso ajudar?"],
+        "context":[""]
     }
 ]
 }

@@ -1,8 +1,16 @@
+------ Escopo faltante
+
+- Função separada para conversao de texto ou num pra semestre
+- Função separada para conversao de datas 
+- Montar estutura patterns e respostas fixas
+
+
 ---To Do's
 
 --- Tratativas (Be)
 
-- Tratar datas
+- Função separada para conversao de texto ou num pra semestre
+- Função separada para conversao de datas 
 - Criar arrays (Sala, Aula e Horario) e fazer Distinct
 - Montar estutura patterns e respostas fixas
 
@@ -14,6 +22,8 @@
 - Deixar o bot rodar e salvar todas as perguntas que ele não entender em um arquivo
 - Montar estutura patterns e respostas fixas
 
+
+"Boa tarde, que aula eu tenho hoje?"
 
 ---Perfumaria
 
