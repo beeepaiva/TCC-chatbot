@@ -68,7 +68,7 @@ def get_response(msg):
     conversation.update({tag: msg})
 
    
-    if prob.item() > 0.75:
+    if prob.item() > 0.65:
         intencao = tag
         
         ###### SE FOR DESCOBRIR SOBRE SALA, HORARIO OU AULAS
@@ -76,59 +76,105 @@ def get_response(msg):
                    if key.startswith("descobrir_")}:
             ##Deve estar presente 
             ## - Semestre e dia
-            if "dia" in entitiesQuestion.keys():
-                dia = convertDate(entitiesQuestion["dia"])
-            else:    
-                dia = date.today()
+            if "dia" not in entitiesStorage.keys():
+                if "dia" in entitiesQuestion.keys():
+                    dia = convertDate(entitiesQuestion["dia"])
+                    entitiesStorage['dia'] = dia
+                else:    
+                    dia = date.today()
+                    entitiesStorage['dia'] = dia
 
-            if "semestre" in entitiesQuestion.keys():
-                turma = convertNum(entitiesQuestion["semestre"])
-            else:
-                return f"Qual seu semestre?"
+            if "semestre" not in entitiesStorage.keys():
+                if "semestre" in entitiesQuestion.keys():
+                    turma = convertNum(entitiesQuestion["semestre"])
+                    entitiesStorage['semestre'] = turma
+                else:
+                    return f"Qual seu semestre?"
 
             ## PROCURA NO EXCEL
             df = pd.read_excel('./database/database_responses.xlsx')
-            values = df[(df['Semestre'] == int(turma)) & (df['Dia'] == dia.strftime("%Y-%m-%d"))]
+            values = df[(df['Semestre'] == int(entitiesStorage['semestre'])) & (df['Dia'] == entitiesStorage['dia'].strftime("%Y-%m-%d"))]
 
             ## DESCOBRIR A INTENÇÃO PRINCIPAL E TRAZER SOMENTE A COLUNA DESEJADA 
+            
             if not values.empty:
                 i = 0
-                arrayResponse = {}
+                j = 0
                 Aulas = []
                 Hor = []
                 Sala = []
-                TurmaA = []
-                TurmaB = []
+                Turmas = []
+                TurmaName = []
                 while i < len(values.index):
-                    if turma == 1:
-                        if values['Turma'].values[i][len(values['Turma'].values[i])-1] == 'A':
-                            TurmaA.append(i)
-                        else:
-                            TurmaB.append(i)    
+                    while j < len(numpy.unique(values['Turma'])):
+                        name = numpy.unique(values['Turma'])[j]
+                        TurmaName.append(name[-1:])
+                        j+=1
+                    Turmas.append(values['Turma'].values[i][-1:])
                     Aulas.append(values['Aula'].values[i])
                     Sala.append(values['Sala'].values[i])
                     Hor.append(values['Horário'].values[i])
                     i += 1
 
             conversation.clear()
-            if len(numpy.unique(Aulas)) == 1 and len(numpy.unique(Sala)) == 1:
-                HoraInicial = Hor[0].split("-")[0]
-                HoraFinal = Hor[3].split("-")[1]
-            #return f"Mensagem: {intent['responses']} {arrayResponse['Aula'].lower()}, na sala {arrayResponse['Sala']}, tag: {intent['tag']}, prob: {prob.item()}"
-                return f"A sua aula é {Aulas[0].lower()}, na sala {Sala[0]} das {HoraInicial} até {HoraFinal}"
-            if len(list(set(Aulas))) >= 1 and turma == 1 and len(numpy.unique(Sala)) >= 1:
-                msgTurmaA = ""
-                msgTurmaB = ""
-                for i in TurmaA:
-                    msgTurmaA += " " + Aulas[i].lower() + " " + Sala[i] + " " + Hor[i]
-                for i in TurmaB:
-                    msgTurmaB += " " + Aulas[i].lower()  + " " +  Sala[i]  + " " +  Hor[i]
-                return f" Se você for da turma A: {msgTurmaA} ou Turma B: {msgTurmaB}"
+            entitiesStorage.clear()
+            lista = []
+            ## Se tiver mais de uma turma
+            if len(TurmaName) > 1:
+                message = ""
+                msgTurma = {}
+                index = 0 
+                while index < len(Aulas):
+                    teste = Turmas[index] + " |-| " + Aulas[index] + " |-| " + Sala[index] 
+                    if teste not in msgTurma.keys():
+                        msgTurma.update({teste:[]})
+                        msgTurma[teste].append(Hor[index])
+                    else:
+                        msgTurma[teste].append(Hor[index])
+                    index +=1
+                for key in msgTurma:                    
+                    HoraInicial = msgTurma[key][0].split("-")[0]
+                    HoraFinal = msgTurma[key][len(msgTurma[key])-1].split("-")[1]
+                    msgTurma[key] = {"HoraInicio": HoraInicial, "HoraFim": HoraFinal}
+
+                for key in msgTurma:
+                    turmam,aula,sala = key.split('|-|')
+                    message += f"Turma: {turmam} na sala {sala} tendo a aula {aula.capitalize()} das {msgTurma[key]['HoraInicio']} até {msgTurma[key]['HoraFim']}"        
+                    message += '\n'
+
+                return message
+            else:
+                message = ""
+                msgTurma = {}
+                index = 0 
+                while index < len(Aulas):
+                    teste = Turmas[index] + " |-| " + Aulas[index] + " |-| " + Sala[index] 
+                    if teste not in msgTurma.keys():
+                        msgTurma.update({teste:[]})
+                        msgTurma[teste].append(Hor[index])
+                    else:
+                        msgTurma[teste].append(Hor[index])
+                    index +=1
+                for key in msgTurma:                    
+                    HoraInicial = msgTurma[key][0].split("-")[0]
+                    HoraFinal = msgTurma[key][len(msgTurma[key])-1].split("-")[1]
+                    msgTurma[key] = {"HoraInicio": HoraInicial, "HoraFim": HoraFinal}
+
+                for key in msgTurma:
+                    turmam,aula,sala = key.split('|-|')
+                    message += f"\nAula {aula.capitalize()}, na sala {sala} das {msgTurma[key]['HoraInicio']} até {msgTurma[key]['HoraFim']} \n"        
+                
+                return message
             ## SE NAO FOR BUSCAR CONTEUDO DINAMICO
         else:
             for intent in intents["intents"]:
                 if tag == intent["tag"]:
                     #return f"Mensagem: {random.choice(intent['responses'])}, tag: {intent['tag']}, prob: {prob.item()}"
-                    return f"Mensagem: {random.choice(intent['responses'])}"
+                    return f"{random.choice(intent['responses'])}"
     else:
         return f"Não entendi, mas você provavelmente pode encontrar essa informação acessando o site! https://www.sp.senac.br/ :)"
+
+
+def createResponse(aula, sala, turma):
+    response = []
+    return response

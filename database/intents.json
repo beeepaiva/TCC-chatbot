@@ -31,6 +31,8 @@
             "Que aula eu tenho amanhã?", 
             "Qual é a disciplina de amanhã?", 
             "Tenho aula do que?",
+            "Que aula tem na segunda?",
+            "Que aula é hoje?",
             "Que disciplina eu tenho amanhã?", 
             "De que disciplina é a aula de hoje?", 
             "De que disciplina é a aula de amanhã?", "De que matéria é a aula de hoje?", 
@@ -42,8 +44,8 @@
     {
         "tag":"estagio_geral",
         "patterns": ["Quais documentos preciso enviar pra fazer o estágio?", 
-            "Até quando posso fazer estágio?", 
-            "Quantas horas preciso fazer de estágio?", "Posso realizar dois estágios?", "Onde encontro os documentos pro estágios?"],
+            "Até quando posso fazer estagio?", "Tenho que fazer estagio?", "O estágio é obrigatorio?",
+            "Quantas horas preciso fazer de estágio?", "Posso realizar dois estagios?", "Onde encontro os documentos pro estágios?"],
         "responses":["Para dúvidas relacionadas a documentação de estágio ou horas, você pode conversar com o coordenador de estágios. Após se logar no portal do Senac www.sp.senac.br, clicar em Ambiente Virtual de Aprendizagem > Ambiente Virtual. Na aba Coordenação, clicar no link com o nome completo do seu curso >Estágio> Orientações de Estágio> Orientação Individual."],
         "context":[""]
 
@@ -127,6 +129,16 @@
         "tag":"trancar_matricula",
         "patterns": ["Eu não aguento mais, quero trancar o curso", "Como trancar a matricula?", "Quero trancar o curso, o que eu faço?"],
         "responses":["Você não é o único ;)", "O caminho para realizar a solicitação pela área exclusiva do aluno é: Formulário de Solicitações > Trancamento de Matrícula"],
+        "context":[""]
+    },
+    {
+        "tag":"coordenacao",
+        "patterns": ["Quem é o coordenador do curso:",
+             "Como falar com o coordenador?",
+             "Qual o email do coordenador?",
+             "Qual o telefone do coordenador?"
+            ],
+        "responses":["O coordenador do BCC é o prof Thiago Claro <thiago.rclaro@gmail.com>"],
         "context":[""]
     },
     {
