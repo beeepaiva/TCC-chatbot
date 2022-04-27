@@ -1,0 +1,3 @@
+
+Entrada: Qual é a aula de amanhã?
+Saida: Qual seu semestre?

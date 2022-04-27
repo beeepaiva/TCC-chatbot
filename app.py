@@ -12,6 +12,12 @@ def predict():
 
     response = get_response(text)
 
+    text_file = open("./log.txt", "a")
+ 
+    #write string to file
+    text_file.write(f'Entrada: {text}\n')
+    text_file.write(f'Saida: {response}\n')
+
     return jsonify(response)
 
 

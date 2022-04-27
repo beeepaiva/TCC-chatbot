@@ -6,3 +6,4 @@ pandas==1.4.2
 spacy==3.2.4
 torch==1.11.0
 typer==0.4.1
+Unidecode==1.3.4

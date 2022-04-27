@@ -11,6 +11,8 @@ from model import Neural
 from nltk.stem.rslp import RSLPStemmer
 stPortugues = RSLPStemmer()
 
+import unidecode
+
 with open('./database/intents.json', encoding='utf-8') as f:
 	intents = json.load(f)
 
@@ -22,7 +24,7 @@ for intent in intents['intents']:
 	tag = intent['tag']
 	tags.append(tag)
 	for pattern in intent['patterns']:
-		w = tokenizacao(pattern)
+		w = tokenizacao(unidecode.unidecode(pattern))
 		all_words.extend(w)
 		xy.append((w, tag))
 

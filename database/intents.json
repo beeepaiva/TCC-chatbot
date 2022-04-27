@@ -138,7 +138,7 @@
              "Qual o email do coordenador?",
              "Qual o telefone do coordenador?"
             ],
-        "responses":["O coordenador do BCC é o prof Thiago Claro <thiago.rclaro@gmail.com>"],
+        "responses":["O coordenador do BCC é o prof <b>Thiago Claro</b> (thiago.rclaro@sp.senac.br)"],
         "context":[""]
     },
     {

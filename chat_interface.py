@@ -18,6 +18,7 @@ from actions import convertNum, convertDate
 import numpy
 import string
 import os
+import unidecode
 
 
 stPortugues = RSLPStemmer()
@@ -45,14 +46,14 @@ conversation = {}
 entitiesStorage = {}
 
 def get_response(msg):
-    sentence = tokenizacao(msg)
+    sentence = tokenizacao(unidecode.unidecode(msg))
     X = bagOfWords(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
     
     # dict para identificar entidade e seu valor na mensagem
     entitiesQuestion = {}
-    doc = spacyEntities(msg)
+    doc = spacyEntities(unidecode.unidecode(msg))
     for ent in doc.ents:
         entitiesQuestion.update({ent.label_: ent.text})
 
@@ -75,18 +76,20 @@ def get_response(msg):
             ## - Semestre e dia
             # Caso o dia não esteja presente, automaticamente pega o HOJE 
             # Se o semestre não estiver presente, ele pergunta 
-            if "dia" not in entitiesStorage.keys() and "dia" in entitiesQuestion.keys():
-                dia = convertDate(entitiesQuestion["dia"])
-                entitiesStorage['dia'] = dia
-            else:    
-                dia = date.today()
-                entitiesStorage['dia'] = dia
+            if "dia" not in entitiesStorage.keys():
+                if "dia" in entitiesQuestion.keys():
+                    dia = convertDate(entitiesQuestion["dia"])
+                    entitiesStorage['dia'] = dia
+                else:    
+                    dia = date.today()
+                    entitiesStorage['dia'] = dia
 
-            if "semestre" not in entitiesStorage.keys() and "semestre" in entitiesQuestion.keys():
-                turma = convertNum(entitiesQuestion["semestre"])
-                entitiesStorage['semestre'] = turma
-            else:
-                return f"Qual seu semestre?"
+            if "semestre" not in entitiesStorage.keys():
+                if "semestre" in entitiesQuestion.keys():
+                    turma = convertNum(entitiesQuestion["semestre"])
+                    entitiesStorage['semestre'] = turma
+                else:
+                    return f"Qual seu semestre?"
 
             ## PROCURA NO EXCEL
             df = pd.read_excel('./database/database_responses.xlsx')
@@ -109,6 +112,8 @@ def get_response(msg):
                     Horarios.append(values['Horário'].values[i])
                     i += 1
             else:
+                del entitiesQuestion['semestre']
+                del entitiesStorage['semestre']
                 return f"Nada foi encontrado :("
 
             #Limpa o contexto que salva as entidades da conversa e a conversa
@@ -140,12 +145,12 @@ def createResponse(aulasResponse, salasResponse, turmasResponse, horariosRespons
     msgTurma = {}
     z = 0 
     while z < len(aulasResponse):
-        teste = turmasResponse[z] + " |-| " + aulasResponse[z] + " |-| " + salasResponse[z] 
-        if teste not in msgTurma.keys():
-            msgTurma.update({teste:[]})
-            msgTurma[teste].append(horariosResponse[z])
+        keyReponse = turmasResponse[z] + " |-| " + aulasResponse[z] + " |-| " + salasResponse[z] 
+        if keyReponse not in msgTurma.keys():
+            msgTurma.update({keyReponse:[]})
+            msgTurma[keyReponse].append(horariosResponse[z])
         else:
-            msgTurma[teste].append(horariosResponse[z])
+            msgTurma[keyReponse].append(horariosResponse[z])
         z +=1
         
     for key in msgTurma:                    

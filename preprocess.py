@@ -4,7 +4,7 @@ import warnings
 from spacy.tokens import DocBin
 from spacy.util import minibatch, compounding
 from spacy.training import Example
-
+import unidecode
 import json
 
 def convert():
@@ -19,7 +19,7 @@ def convert():
 
 
     for text, annot in TRAIN_DATA:
-        doc = nlp.make_doc(text)
+        doc = nlp.make_doc(unidecode.unidecode(text))
         ents = []
         for start, end, label in annot["entities"]:
             span = doc.char_span(start, end, label=label)
