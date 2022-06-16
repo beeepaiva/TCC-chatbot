@@ -78,7 +78,7 @@ def get_response(msg):
             # Se o semestre não estiver presente, ele pergunta 
             if "dia" not in entitiesStorage.keys():
                 if "dia" in entitiesQuestion.keys():
-                    dia = convertDate(entitiesQuestion["dia"])
+                    dia = convertDate(entitiesQuestion["dia"].lower())
                     entitiesStorage['dia'] = dia
                 else:    
                     dia = date.today()
@@ -86,7 +86,7 @@ def get_response(msg):
 
             if "semestre" not in entitiesStorage.keys():
                 if "semestre" in entitiesQuestion.keys():
-                    turma = convertNum(entitiesQuestion["semestre"])
+                    turma = convertNum(entitiesQuestion["semestre"].lower())
                     entitiesStorage['semestre'] = turma
                 else:
                     return f"Qual seu semestre?"
@@ -163,6 +163,6 @@ def createResponse(aulasResponse, salasResponse, turmasResponse, horariosRespons
         if id == 1:
             message += f' - Turma {turmaN} na sala {sala} tendo a aula {string.capwords(aula)} das {msgTurma[key]["HoraInicio"]} até {msgTurma[key]["HoraFim"]}<br>'
         else:
-            message += f' - Aula {string.capwords(aula)}, na sala {sala} das {msgTurma[key]["HoraInicio"]} até {msgTurma[key]["HoraFim"]}{os.linesep}<br>'
+            message += f' - Aula {string.capwords(aula)}, na sala {sala} das {msgTurma[key]["HoraInicio"]} até {msgTurma[key]["HoraFim"]}<br>'
     
     return message

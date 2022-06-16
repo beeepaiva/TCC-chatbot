@@ -13,8 +13,7 @@
             "Estou em dúvida sobre a sala", "Estou em dúvida sobre o lugar da aula", "Estou em dúvida sobre o lugar da aula", 
             "Estou em dúvida sobre o lugar da aula de hoje", "Estou em dúvida sobre o local da aula", "Estou em dúvida sobre o local da aula de hoje", 
             "Em que lugar vou ter aula hoje?", "Em que lugar eu vou ter aula?", "Qual é o lugar da minha aula hoje?", "Qual é o lugar da minha aula?", "Não sei o local da aula", "Não sei o lugar da aula", "Em que local eu vou ter aula hoje?", "Qual é o lugar da minha aula?", "Qual é o lugar da minha aula hoje?", "Qual é o local da minha aula?", "Qual é o local da minha aula hoje?", "Quero saber a sala de aula", "Quero saber a sala de aula de hoje", "Queria saber a sala de aula", "Queria saber a sala de aula de hoje", "Quero saber o local da aula", "Quero saber o local da aula de hoje", "Queria saber o local da aula", "Queria saber o local da aula de hoje", "Quero saber o lugar da aula", "Quero saber o lugar da aula de hoje", "Queria saber o lugar da aula", "Queria saber o lugar da aula de hoje", "Preciso de ajuda com a sala de aula", "Preciso de ajuda pra saber a sala de aula", "Preciso de ajuda pra saber a sala", "Preciso de ajuda pra saber a sala de aula de hoje", "Preciso de ajuda pra saber a sala de hoje", "Preciso de ajuda pra saber o lugar da aula", "Preciso de ajuda pra saber o lugar da aula de hoje", "Preciso de ajuda pra saber a sala de hoje"],
-        "responses":"",
-        "context":[""]
+        "responses":""
     },
     {
         "tag":"descobrir_materia",
@@ -36,9 +35,8 @@
             "Que disciplina eu tenho amanhã?", 
             "De que disciplina é a aula de hoje?", 
             "De que disciplina é a aula de amanhã?", "De que matéria é a aula de hoje?", 
-            "De que matéria é a aula de amanhã?", "Do que que eu tenho aula?", "De que que é a aula?"],
-        "responses":"",
-        "context":[""]
+            "De que matéria é a aula de amanhã?", "Do que que eu tenho aula?", "De que que é a aula?", "Queria saber que aula o primeiro tem na terça"],
+        "responses":""
 
     },
     {
@@ -46,8 +44,7 @@
         "patterns": ["Quais documentos preciso enviar pra fazer o estágio?", 
             "Até quando posso fazer estagio?", "Tenho que fazer estagio?", "O estágio é obrigatorio?",
             "Quantas horas preciso fazer de estágio?", "Posso realizar dois estagios?", "Onde encontro os documentos pro estágios?"],
-        "responses":["Para dúvidas relacionadas a documentação de estágio ou horas, você pode conversar com o coordenador de estágios. Após se logar no portal do Senac www.sp.senac.br, clicar em Ambiente Virtual de Aprendizagem > Ambiente Virtual. Na aba Coordenação, clicar no link com o nome completo do seu curso >Estágio> Orientações de Estágio> Orientação Individual."],
-        "context":[""]
+        "responses":["Para dúvidas relacionadas a documentação de estágio ou horas, você pode conversar com o coordenador de estágios. Após se logar no portal do Senac www.sp.senac.br, clicar em Ambiente Virtual de Aprendizagem > Ambiente Virtual. Na aba Coordenação, clicar no link com o nome completo do seu curso >Estágio> Orientações de Estágio> Orientação Individual."]
 
     },
     {
@@ -56,8 +53,7 @@
             "Posso faltar quantas vezes?", 
             "Quanto de frequencia preciso ter pra passar?", 
             "Se eu faltar muito eu passo?"],
-        "responses":["É necessário ter frequência igual ou superior a 75% (setenta e cinco por cento) da carga horária em cada componente curricular. A frequência do aluno consiste em sua participação nas aulas e/ou outras atividades programadas em cada componente curricular, registrada pelo professor no diário de classe"],
-        "context":[""]
+        "responses":["É necessário ter frequência igual ou superior a 75% (setenta e cinco por cento) da carga horária em cada componente curricular. A frequência do aluno consiste em sua participação nas aulas e/ou outras atividades programadas em cada componente curricular, registrada pelo professor no diário de classe"]
     },
     {
         "tag":"campus",
@@ -66,8 +62,7 @@
             "Quantas praças de alimentação tem o Senac?", 
             "O Senac tem sala de costura?", "O Senac tem estacionamento?", 
             "Que horas o Senac abre?", "Que horas o Senac fecha?"],
-        "responses":["teste campus 1", "teste campus 2"],
-        "context":[""]
+        "responses":["teste campus 1", "teste campus 2"]
 
     },
     {
@@ -76,8 +71,7 @@
             "Quais são os pré-requisitos pra conseguir a bolsa?", 
             "Quanto tenho de desconto com a minha bolsa?", 
             "O que preciso fazer para manter minha bolsa?", "Posso pegar DP tendo bolsa?"],
-        "responses":["Existem programas de bolsas de estudo no Senac! Para saber mais você pode acessar o site https://www.sp.senac.br/graduacao/bolsas-descontos-e-parcelamento/ "],
-        "context":[""]
+        "responses":["Existem programas de bolsas de estudo no Senac! Para saber mais você pode acessar o site https://www.sp.senac.br/graduacao/bolsas-descontos-e-parcelamento/ "]
 
     },
     {
@@ -86,8 +80,7 @@
             "Quanto custa uma DP?", "Quando posso cursar uma DP?", 
             "Posso pegar DP de uma matéria que já estou fazendo DP?", 
             "Quantas vezes posso pegar a mesma DP?"],
-        "responses":["teste dp", "teste dp"],
-        "context":[""]
+        "responses":["teste dp", "teste dp"]
 
     },
     {
@@ -96,8 +89,7 @@
             "Quantas horas preciso fazer de atividades complementares?", 
             "Consigo me formar sem fazer atividades complementares?", "O que são atividades complementares?", 
             "Por que tenho que fazer atividades?", "Como entrego minhas horas complementares?"],
-        "responses":["teste atividades", "teste atv estudo"],
-        "context":[""]
+        "responses":["teste atividades", "teste atv estudo"]
 
     },
     {
@@ -109,27 +101,32 @@
             "Tenho opção de eletivas no curso?", "Tenho matérias práticas no curso?", 
             "Quais são as disciplinas do curso?", 
             "Quais são as disciplinas do terceiro semestre do meu curso?"],
-        "responses":["Para saber mais sobre as informações sobre o curso, suas matérias e áreas em que poderá atuar após se formar, veja: https://www.sp.senac.br/graduacao/bacharelado-em-ciencia-da-computacao"],
-        "context":[""]
+        "responses":["Para saber mais sobre as informações sobre o curso, suas matérias e áreas em que poderá atuar após se formar, veja: https://www.sp.senac.br/graduacao/bacharelado-em-ciencia-da-computacao"]
 
     },
     {
         "tag":"rematricula_contato",
-        "patterns": ["Estou com problema na rematrícula, como faço para entrar em contato?", "Como entro em contato para resolver minha rematricula?", "Minha rematricula ta com problema, o que eu faço?"],
-        "responses":["O atendimento será feito exclusivamente pelos chamados, na área exclusiva do aluno: > Formulário de Solicitações > Rematrícula. Os atendimentos não serão realizados por contato telefônico."],
-        "context":[""]
+        "patterns": ["Estou com problema na rematrícula, como faço para entrar em contato?", "Como entro em contato para resolver minha rematricula?", "Minha rematricula ta com problema, o que eu faço?", "Quero fazer minha rematrícula", "Como faço a rematricula"],
+        "responses":["O atendimento será feito exclusivamente pelos chamados, na área exclusiva do aluno: > Formulário de Solicitações > Rematrícula. Os atendimentos não serão realizados por contato telefônico."]
     },
     {
         "tag":"eletiva_matricula",
         "patterns": ["Como devo fazer a matrícula na disciplina eletiva?", "Fiz a matrícula na disciplina eletiva, posso mudar?"],
-        "responses":["Para os cursos que possuem disciplinas eletivas, a matrícula será durante o período estabelecido para a rematrícula e não é permitida a mudança de eletiva, salvo se a disciplina não atingir um número mínimo de matriculados ela será cancelada e a coordenação dará outras opções de disciplinas para escolha."],
-        "context":[""]
+        "responses":["Para os cursos que possuem disciplinas eletivas, a matrícula será durante o período estabelecido para a rematrícula e não é permitida a mudança de eletiva, salvo se a disciplina não atingir um número mínimo de matriculados ela será cancelada e a coordenação dará outras opções de disciplinas para escolha."]
+    },
+    {
+        "tag":"realizar_matricula",
+        "patterns": [
+            "Como faço para me matricular no curso", 
+            "Como fazer a matricula?", 
+            "Quero fazer o curso, como me matriculo?"
+        ],
+        "responses":["Matricula Resposta"]
     },
     {
         "tag":"trancar_matricula",
         "patterns": ["Eu não aguento mais, quero trancar o curso", "Como trancar a matricula?", "Quero trancar o curso, o que eu faço?"],
-        "responses":["Você não é o único ;)", "O caminho para realizar a solicitação pela área exclusiva do aluno é: Formulário de Solicitações > Trancamento de Matrícula"],
-        "context":[""]
+        "responses":["O caminho para realizar a solicitação pela área exclusiva do aluno é: Formulário de Solicitações > Trancamento de Matrícula"]
     },
     {
         "tag":"coordenacao",
@@ -138,14 +135,22 @@
              "Qual o email do coordenador?",
              "Qual o telefone do coordenador?"
             ],
-        "responses":["O coordenador do BCC é o prof <b>Thiago Claro</b> (thiago.rclaro@sp.senac.br)"],
-        "context":[""]
+        "responses":["O coordenador do BCC é o prof <b>Thiago Claro</b> (thiago.rclaro@sp.senac.br)"]
+    },
+    {
+        "tag":"meformar",
+        "patterns": ["A Be e o Bre vão se formar?", "A Be e o Bre estão aprovados?", "A Be e o Bre estão formados?", "Vamos nos formar?"],
+        "responses":["Com certeza! A Cris e o Celso já deram 10!!!"]
+    },
+    {
+        "tag":"melhoresProfes",
+        "patterns": ["Quem são os melhores professores?", "Quais são os professores mais incriveis?", "Entre os professores, quais são os melhores?"],
+        "responses":["A Cris e o Celso, dããã, moleza!"]
     },
     {
         "tag":"saudacao",
         "patterns": ["Oi"," Olá", "Bom dia", "Boa tarde", "Boa noite", "Preciso de ajuda", "Tudo bem?" ],
-        "responses":["Olá! Como posso ajudar?"],
-        "context":[""]
+        "responses":["Olá! Como posso ajudar?"]
     }
 
 ]

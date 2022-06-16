@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-from nlp_inicial import tokenizacao, stem, bagOfWords, st
+from nlp_inicial import tokenizacao, stem, bagOfWords
 from model import Neural
 from nltk.stem.rslp import RSLPStemmer
 stPortugues = RSLPStemmer()
@@ -37,7 +37,7 @@ tags = sorted(set(tags))
 x_train = []
 y_train = []
 for(pattern_setence, tag) in xy:
-	bag =bagOfWords(pattern_setence, all_words)
+	bag = bagOfWords(pattern_setence, all_words)
 	x_train.append(bag)
 
 	label = tags.index(tag)
@@ -50,7 +50,7 @@ y_train = np.array(y_train)
 batch_size = 8
 hidden_size = 8
 output_size = len(tags)
-input_size = len(all_words)
+input_size = len(x_train[0])
 learning_rate = 0.001
 number_epochs = 1000
 

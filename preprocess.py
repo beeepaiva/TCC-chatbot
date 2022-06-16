@@ -11,6 +11,7 @@ def convert():
     lang = "pt"
     input_path = "./database/entities_training.json"
     output_path = "./corpus/train.spacy"
+    output_path2 = "./corpus/dev.spacy"
     nlp = spacy.blank("pt")
     db = DocBin()
 
@@ -31,6 +32,7 @@ def convert():
         doc.ents = ents
         db.add(doc)
         db.to_disk(output_path)
+        db.to_disk(output_path2)
 
 
 if __name__ == "__main__":
